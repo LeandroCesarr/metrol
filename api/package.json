@@ -4,6 +4,7 @@
   "description": "metrol",
   "main": "app.js",
   "scripts": {
+    "start": "node src/app.js",
     "server": "nodemon src/app.js"
   },
   "repository": {

@@ -4,8 +4,7 @@
   "description": "metrol",
   "main": "app.js",
   "scripts": {
-    "postinstall": "cd api && npm install",
-    "start": "cd api && node src/app.js"
+    "postinstall": "npm start --prefix api"
   },
   "repository": {
     "type": "git",
