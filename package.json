@@ -1,0 +1,23 @@
+{
+  "name": "metrol",
+  "version": "1.0.0",
+  "description": "metrol",
+  "main": "app.js",
+  "scripts": {
+    "postinstall": "cd api && npm install",
+    "start": "cd api && node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pineappleDevsBr/metrol.git"
+  },
+  "keywords": [
+    "manager"
+  ],
+  "author": "pineappleDevsBR",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pineappleDevsBr/metrol/issues"
+  },
+  "homepage": "https://github.com/pineappleDevsBr/metrol#readme",
+}
