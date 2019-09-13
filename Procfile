@@ -1,3 +1,3 @@
 // Procfile
 
-web: node api/src/app.js
+web: npm start --prefix api
