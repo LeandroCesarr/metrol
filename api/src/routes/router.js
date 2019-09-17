@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-  res.send('jesse babaca')
-});
+const repairShop = require('../controllers/repairShopController');
+
+router.get('/repair-shop', repairShop.index);
+router.post('/repair-shop', repairShop.create);
 
 module.exports = router;
