@@ -19,7 +19,7 @@ module.exports = {
         }
     },
 
-    async obtainOne(req, res) {
+    async indexOf(req, res) {
         const id = req.params.id;
         try {
             const user = User.findById(id);
@@ -39,7 +39,7 @@ module.exports = {
             const user = await User.findByIdAndUpdate(payload._id, req.body);
             if (user) {
                 // res.send(user);
-                res.sendStatus(202).end();
+                res.sendStatus(204).end();
             } else {
                 res.sendStatus(404).end();
             }
