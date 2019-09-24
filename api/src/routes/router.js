@@ -5,6 +5,7 @@ const repairShop = require('../controllers/repairShopController');
 const service = require('../controllers/serviceController');
 const user = require('../controllers/userController');
 const category = require('../controllers/categoryController');
+const clientService = require('../controllers/clientServiceController');
 
 router.get('/repair-shop', repairShop.indexOf);
 router.get('/repair-shop', repairShop.index);
@@ -29,5 +30,11 @@ router.get('/category', category.index);
 router.put('/category', category.update);
 router.post('/category', category.create);
 router.delete('/category', category.delete);
+
+router.get('/client-service/:id', clientService.indexOf);
+router.get('/client-service', clientService.index);
+router.put('/client-service', clientService.update);
+router.post('/client-service', clientService.create);
+router.delete('/client-service', clientService.delete);
 
 module.exports = router;
