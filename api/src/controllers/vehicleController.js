@@ -3,7 +3,7 @@ const Vehicle = require('../models/Vehicle');
 module.exports = {
   async index(req, res) {
     try {
-      const response = await Vehicle.find();
+      const response = await Vehicle.find().populate('brand');
       res.send(response);
     } catch (error) {
       res.send(error);
@@ -12,7 +12,7 @@ module.exports = {
 
   async indexOf(req, res) {
     try {
-      const response = await Vehicle.findById(req.params.id)
+      const response = await Vehicle.findById(req.params.id).populate('brand');
 
       if (response) res.send(response);
       else res.sendStatus(404).end();
@@ -46,7 +46,7 @@ module.exports = {
     const id = req.body._id;
 
     try {
-      const response = await Vehicle.findByIdAndUpdate(id);
+      const response = await Vehicle.findByIdAndRemove(id);
       if (response) res.sendStatus(204).end();
       else res.sendStatus(404).end();
     } catch (error) {

@@ -3,7 +3,7 @@ const ClientService = require('../models/ClientService');
 module.exports = {
   async index(req, res) {
     try {
-      const response = await ClientService.find();
+      const response = await ClientService.find().populate('client');
       res.send(response);
     } catch (error) {
       res.send(error);
@@ -12,7 +12,7 @@ module.exports = {
 
   async indexOf(req, res) {
     try {
-      const response = await ClientService.findById(req.params.id)
+      const response = await ClientService.findById(req.params.id).populate('client');
 
       if (response) res.send(response);
       else res.sendStatus(404).end();
@@ -46,7 +46,7 @@ module.exports = {
     const id = req.body._id;
 
     try {
-      const response = await ClientService.findByIdAndUpdate(id);
+      const response = await ClientService.findByIdAndRemove(id);
       if (response) res.sendStatus(204).end();
       else res.sendStatus(404).end();
     } catch (error) {

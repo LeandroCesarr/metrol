@@ -3,7 +3,7 @@ const Product = require('../models/Product');
 module.exports = {
   async index(req, res) {
     try {
-      const response = await Product.find();
+      const response = await Product.find().populate('repairShop').populate('category');
       res.send(response);
     } catch (error) {
       res.send(error);
@@ -12,7 +12,7 @@ module.exports = {
 
   async indexOf(req, res) {
     try {
-      const response = await Product.findById(req.params.id)
+      const response = await Product.findById(req.params.id).populate('repairShop').populate('category');
 
       if (response) res.send(response);
       else res.sendStatus(404).end();
@@ -46,7 +46,7 @@ module.exports = {
     const id = req.body._id;
 
     try {
-      const response = await Product.findByIdAndUpdate(id);
+      const response = await Product.findByIdAndRemove(id);
       if (response) res.sendStatus(204).end();
       else res.sendStatus(404).end();
     } catch (error) {

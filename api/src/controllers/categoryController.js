@@ -46,7 +46,7 @@ module.exports = {
     const id = req.body._id;
 
     try {
-      const response = await Category.findByIdAndUpdate(id);
+      const response = await Category.findByIdAndRemove(id);
       if (response) res.sendStatus(204).end();
       else res.sendStatus(404).end();
     } catch (error) {

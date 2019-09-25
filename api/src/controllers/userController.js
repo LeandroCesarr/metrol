@@ -12,7 +12,7 @@ module.exports = {
 
     async index(req, res) {
         try {
-            const response = await User.find();
+            const response = await User.find().populate('repairShop');
             res.send(response);
         } catch (error) {
             res.send(error);
@@ -22,7 +22,7 @@ module.exports = {
     async indexOf(req, res) {
         const id = req.params.id;
         try {
-            const user = User.findById(id);
+            const user = User.findById(id).populate('repairShop');
             if (user) {
                 res.send(user);
             } else {

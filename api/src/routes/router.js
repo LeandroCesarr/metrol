@@ -9,12 +9,19 @@ const vehicle = require('../controllers/vehicleController');
 const client = require('../controllers/clientController');
 const category = require('../controllers/categoryController');
 const clientService = require('../controllers/clientServiceController');
+const product = require('../controllers/productController');
 
-router.get('/repair-shop', repairShop.indexOf);
+router.get('/repair-shop/:id', repairShop.indexOf);
 router.get('/repair-shop', repairShop.index);
 router.put('/repair-shop', repairShop.update);
 router.post('/repair-shop', repairShop.create);
 router.delete('/repair-shop', repairShop.delete);
+
+router.get('/product/:id', product.indexOf);
+router.get('/product', product.index);
+router.put('/product', product.update);
+router.post('/product', product.create);
+router.delete('/product', product.delete);
 
 router.get('/user/:id', user.indexOf);
 router.get('/user', user.index);

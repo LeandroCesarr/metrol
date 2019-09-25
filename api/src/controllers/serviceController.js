@@ -3,7 +3,7 @@ const Service = require('../models/Service');
 module.exports = {
   async index(req, res) {
     try {
-      const response = await Service.find();
+      const response = await Service.find().populate('repairShop');
       res.send(response);
     } catch (error) {
       res.send(error);
@@ -12,7 +12,7 @@ module.exports = {
 
   async indexOf(req, res) {
     try {
-      const response = await Service.findById(req.params.id)
+      const response = await Service.findById(req.params.id).populate('repairShop')
 
       if (response) res.send(response);
       else res.sendStatus(404).end();
@@ -46,7 +46,7 @@ module.exports = {
     const id = req.body._id;
 
     try {
-      const response = await Service.findByIdAndUpdate(id);
+      const response = await Service.findByIdAndRemove(id);
       if (response) res.sendStatus(204).end();
       else res.sendStatus(404).end();
     } catch (error) {

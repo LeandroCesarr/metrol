@@ -1,10 +1,15 @@
 const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
-  name: { type: String, required: true },
+  status: {
+    type: Number, 
+    required: true, 
+    enum: [1, 2, 3],
+    default: 1 
+  },
   price: { type: Number, require: true },
   delivery_date: { type: Date, required: true },
-  client: { type: mongoose.ObjectId, ref: 'Client' }
+  client: { type: mongoose.ObjectId, ref: 'Client', required: true }
 }, {
   timestamps: true,
 });
