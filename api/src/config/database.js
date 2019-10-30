@@ -1,18 +1,15 @@
 const mongoose = require('mongoose');
+const env = require('./env');
+const host = env('DB_HOST');
+const password = env('DB_PASSWORD');
 
-module.exports = (uri) => {
-  mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+module.exports = {
+  init() {
+    mongoose.connect(`mongodb+srv://${host}:${password}@cluster0-pky5x.mongodb.net/test?retryWrites=true&w=majority`, {
+      useNewUrlParser: true,
+      useFindAndModify: false
+    })
 
-  mongoose.set('useFindAndModify', false);
-  mongoose.set('useCreateIndex', true);
-
-  mongoose.connection.on('connected', () => console.log(`MongoDB connected: ${uri}`));
-  mongoose.connection.on('disconnected', () => console.log(`MongoDB diconnected: ${uri}`));
-  mongoose.connection.on('error', (error) => console.log(`MongoDB error: ${error}`));
-  process.on('SIGINT', () => {
-    process.exit(0);
-  });
+    mongoose.connection.on('connected', () => console.log(`MongoDB connected`));
+  }
 }

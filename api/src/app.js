@@ -1,15 +1,17 @@
 const express = require('express');
 const notifier = require('node-notifier');
-const nomralizePort = require('./config/port');
+const normalizePort = require('./config/port');
 const router = require('./routes/router');
 const bodyParser = require('body-parser');
 const database = require('./config/database');
-database('mongodb://localhost:27017/metrol');
+const dotenv = require('dotenv');
 
 const app = express();
-const port = nomralizePort(process.env.PORT || '4000');
+const port = normalizePort(process.env.PORT || '4000');
 
 app.use(bodyParser.json());
+database.init();
+dotenv.config();
 app.use(express.urlencoded({ extended: false }));
 app.use(router);
 
