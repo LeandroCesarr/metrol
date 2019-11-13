@@ -1,20 +1,13 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const jwtSecret = require('../config/jwt');
-
-async function generateToken(params = {}) {
-	return jwt.sign(params, jwtSecret.secret, {
-		expiresIn: 86400,
-	});
-}
 
 module.exports = {
   async create(req, res) {
     const { email, password, repairShop } = req.body;
     const checkHasUser = await User.findOne({ email });
     const cryptKey = await bcrypt.hash(password, 10);
-    const token = await generateToken({ repairShop });
+    const token = await jwtSecret.generateToken({ repairShop });
 
     if (checkHasUser) res.sendStatus(400);
     req.body.password = cryptKey;
@@ -32,7 +25,7 @@ module.exports = {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     const cripty = await bcrypt.compare(password, user.password);
-    // const token = await generateToken({ repairShop: user.repairShop });
+    // const token = await jwtSecret.generateToken({ repairShop: user.repairShop });
 
     if (!user) res.sendStatus(404).end();
     if (!cripty) res.sendStatus(401).end();
@@ -68,7 +61,6 @@ module.exports = {
     try {
       const user = await User.findByIdAndUpdate(payload._id, req.body);
       if (user) {
-        // res.send(user);
         res.sendStatus(204).end();
       } else {
         res.sendStatus(404).end();

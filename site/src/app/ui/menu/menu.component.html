@@ -1,0 +1,13 @@
+<nav class="o-menu" [ngClass]="{ 'active': active === true }">
+  <button class="o-menu_button" mat-button (click)="active = !active">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <ul class="o-menu_list">
+    <li class="o-menu_item">
+      <a [routerLink]="['/login']" class="o-menu_link">Login</a>
+    </li>
+    <li class="o-menu_item">
+      <a href="" class="o-menu_link">Teste</a>
+    </li>
+  </ul>
+</nav>

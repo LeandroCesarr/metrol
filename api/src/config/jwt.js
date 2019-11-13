@@ -1,8 +1,11 @@
 const env = require('./env');
+const jwt = require('jsonwebtoken');
 
 module.exports = {
   secret: env('JWT_SECREt'),
-  getToken(bearer) {
-    return
+  async generateToken(params = {}) {
+    return await jwt.sign(params, env('JWT_SECREt'), {
+      expiresIn: 86400,
+    });
   }
 }
