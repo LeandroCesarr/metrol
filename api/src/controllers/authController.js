@@ -1,34 +1,29 @@
-const env = require('../config/env');
 const jwt = require('jsonwebtoken');
+const jwtSecret = require('../config/jwt');
 
-module.exports = {
-  login(req, res) {
-    if(req.body.user === 'luiz' && req.body.pwd === '123'){
-      //auth ok
-      const id = 1; //esse id viria do banco de dados
-      var token = jwt.sign({ id }, process.env.SECRET, {
-        expiresIn: 300 // expires in 5min
-      });
-      res.status(200).send({ auth: true, token: token });
-    }
-    
-    res.status(500).send('Login inválido!');
-  },
+module.exports = async (req, res, next) => {
+  const authHeader = req.headers.authorization;
 
-  logout(req, res) {
-    res.status(200).send({ auth: false, token: null });
-  },
+  if (!authHeader) {
+    res.send({ status: 401, error: 'No token provided' });
+  }
 
-  verify(req, res, next) {
-    const token = req.headers['x-access-token'];
-  
-    if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
-  
-    jwt.verify(token, env('JWT_SECRET'), (err, decoded) => {
-      if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
-  
-      req.userId = decoded.id;
-      next();
-    });
+  const parts = authHeader.split(' ');
+
+  if (!parts.length === 2) {
+    res.send({ status: 401, error: 'Token error' });
+  }
+
+  const [ scheme, token ] = parts;
+
+  if (!/^Bearer$/i.test(scheme)) {
+    res.send({ status: 401, error: 'Token malformatted' });
+  }
+
+  try {
+    const response = await jwt.verify(token, jwtSecret.secret);
+    next();
+  } catch (err) {
+    res.send(err);
   }
 }

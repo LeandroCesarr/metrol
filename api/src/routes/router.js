@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const auth = require('../controllers/authController');
 const repairShop = require('../controllers/repairShopController');
 const service = require('../controllers/serviceController');
 const user = require('../controllers/userController');
@@ -24,7 +25,7 @@ router.post('/product', product.create);
 router.delete('/product', product.delete);
 
 router.get('/user/:id', user.indexOf);
-router.get('/user', user.index);
+router.get('/user', auth, user.index);
 router.put('/user', user.update);
 router.post('/user', user.create);
 router.delete('/user', user.delete);

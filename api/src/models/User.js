@@ -10,7 +10,8 @@ const schema = mongoose.Schema({
         }
     },
     password: {type: String, require: true},
-    repairShop: {type: mongoose.ObjectId, ref: 'RepairShop'}
+    repairShop: {type: mongoose.ObjectId, ref: 'RepairShop'},
+    token: { type: String, require: true }
 }, {
     timestamps: true
 });

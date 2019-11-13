@@ -7,7 +7,7 @@ const database = require('./config/database');
 const dotenv = require('dotenv');
 
 const app = express();
-const port = normalizePort(process.env.PORT || '4000');
+const port = normalizePort(process.env.PORT || '8000');
 
 app.use(bodyParser.json());
 database.init();
