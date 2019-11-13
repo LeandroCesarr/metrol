@@ -1,15 +1,15 @@
 
 <main class="t-login">
   <div class="t-login_hld">
-    <form method="POST" class="t-login_form">
+    <form method="POST" class="t-login_form" (ngSubmit)="login(f)">
       <mat-form-field>
         <input type="email" matInput placeholder="E-mail" required name="email" [(ngModel)]="user.email">
       </mat-form-field>
       <mat-form-field>
-        <input type="email" matInput placeholder="Password" required name="password" [(ngModel)]="user.password">
+        <input type="password" matInput placeholder="Password" required name="password" [(ngModel)]="user.password">
       </mat-form-field>
 
-      <button type="submit" mat-raised-button>Login</button>
+      <button type="submit" mat-raised-button class="t-login_submit">Login</button>
       <a href="/" mat-raised-button>Registre-se</a>
     </form>
   </div>

@@ -5,10 +5,12 @@ const router = require('./routes/router');
 const bodyParser = require('body-parser');
 const database = require('./config/database');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 const app = express();
 const port = normalizePort(process.env.PORT || '8000');
 
+app.use(cors());
 app.use(bodyParser.json());
 database.init();
 dotenv.config();

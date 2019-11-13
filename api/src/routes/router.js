@@ -28,6 +28,7 @@ router.get('/user/:id', user.indexOf);
 router.get('/user', auth, user.index);
 router.put('/user', user.update);
 router.post('/user', user.create);
+router.post('/user/login', user.access);
 router.delete('/user', user.delete);
 
 router.get('/service/:id', service.indexOf);
@@ -61,7 +62,7 @@ router.post('/vehicle', vehicle.create);
 router.delete('/vehicle', vehicle.delete);
 
 router.get('/client/:id', client.indexOf);
-router.get('/client', client.index);
+router.get('/client', auth, client.index);
 router.put('/client', client.update);
 router.post('/client', client.create);
 router.delete('/client', client.delete);

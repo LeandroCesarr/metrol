@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiBaseURL: 'http://localhost:8000/',
+  // apiBaseURL: 'https://metrol-api/herokuapp.com/'
 };
 
 /*

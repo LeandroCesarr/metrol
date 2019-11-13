@@ -16,10 +16,6 @@ module.exports = {
     const cryptKey = await bcrypt.hash(password, 10);
     const token = await generateToken({ repairShop });
 
-    console.log(token);
-    
-    
-
     if (checkHasUser) res.sendStatus(400);
     req.body.password = cryptKey;
     req.body.token = token;
@@ -30,6 +26,18 @@ module.exports = {
     } catch (error) {
       res.send(error);
     }
+  },
+
+  async access(req, res) {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    const cripty = await bcrypt.compare(password, user.password);
+    // const token = await generateToken({ repairShop: user.repairShop });
+
+    if (!user) res.sendStatus(404).end();
+    if (!cripty) res.sendStatus(401).end();
+
+    res.send(user);
   },
 
   async index(req, res) {

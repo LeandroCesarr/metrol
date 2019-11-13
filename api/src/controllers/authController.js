@@ -22,6 +22,7 @@ module.exports = async (req, res, next) => {
 
   try {
     const response = await jwt.verify(token, jwtSecret.secret);
+    req.repairShop = response.repairShop;
     next();
   } catch (err) {
     res.send(err);
