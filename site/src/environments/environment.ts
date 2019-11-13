@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiBaseURL: 'http://localhost:8000/',
-  // apiBaseURL: 'https://metrol-api/herokuapp.com/'
+  // apiBaseURL: 'http://localhost:8000/',
+  apiBaseURL: 'https://metrol-api/herokuapp.com/'
 };
 
 /*
