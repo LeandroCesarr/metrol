@@ -4,10 +4,19 @@
   </button>
   <ul class="o-menu_list">
     <li class="o-menu_item">
-      <a [routerLink]="['/login']" class="o-menu_link">Login</a>
+      <a [routerLinkActive]="['active']" [routerLink]="['/']" class="o-menu_link">Home</a>
     </li>
     <li class="o-menu_item">
-      <a href="" class="o-menu_link">Teste</a>
+      <a [routerLinkActive]="['active']" [routerLink]="['/login']" class="o-menu_link">Serviços</a>
+    </li>
+    <li class="o-menu_item">
+      <a [routerLinkActive]="['active']" [routerLink]="['/login']" class="o-menu_link">Estoque</a>
+    </li>
+    <li class="o-menu_item">
+      <a [routerLinkActive]="['active']" [routerLink]="['/login']" class="o-menu_link">Clientes</a>
+    </li>
+    <li class="o-menu_item">
+      <a [routerLinkActive]="['active']" [routerLink]="['/login']" class="o-menu_link">Configurações</a>
     </li>
   </ul>
 </nav>

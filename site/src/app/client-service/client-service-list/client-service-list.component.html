@@ -1,0 +1,11 @@
+<p>client-service-list works!</p>
+
+<ul *ngFor="let item of services">
+  <li style="background-color: cornsilk;">
+    <p>{{ item.status }}</p>
+    <p>{{ item.delivery_date }}</p>
+    <p>{{ item.name }}</p>
+    <p>{{ item.client?.name }}</p>
+    <p>{{ item.client?.vehicle }}</p>
+  </li>
+</ul>

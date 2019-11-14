@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DefaultComponent } from './template/default/default.component';
 import { MenuComponent } from './ui/menu/menu.component';
+import { ClientServiceListComponent } from './client-service/client-service-list/client-service-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MenuComponent } from './ui/menu/menu.component';
     HomeComponent,
     DashboardComponent,
     DefaultComponent,
-    MenuComponent
+    MenuComponent,
+    ClientServiceListComponent
   ],
   imports: [
     BrowserModule,

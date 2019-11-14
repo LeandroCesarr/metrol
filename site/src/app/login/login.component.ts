@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     try {
       const response = await this.service.auth(this.user);
       this.cookie.set('metrol_token', response['token']);
-      this.router.navigate(['home']);
+      this.router.navigate(['/']);
     } catch (err) {
       alert(err);
     }

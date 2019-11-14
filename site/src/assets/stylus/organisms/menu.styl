@@ -24,4 +24,60 @@
   padding-bottom: 20px;
   margin-top: 0;
   margin-bottom: 0;
+  list-style: none;
+}
+
+.o-menu_item {
+  transform: translateX(-40px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.6, 0.03, 0.3, 1);
+
+  .active & {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+}
+
+for $i in (1..10) {
+  .o-menu_item:nth-child({$i}) {
+    transition-delay: ($i - 1) * .08s;
+  }
+}
+
+.o-menu_link {
+  display: block;
+  text-decoration: none;
+  font-size: 18px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  transition: color .3s ease;
+  cursor: pointer;
+  position: relative;
+
+  &.active  {
+    color: $colors['main-yellow'];
+  }
+
+  &:hover {
+    color: $colors['main-yellow'];
+
+    &:before {
+      transform: scaleX(1);
+    }
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: $colors['main-yellow'];
+    bottom: 5px;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: color, transform .3s ease;
+  }
 }
