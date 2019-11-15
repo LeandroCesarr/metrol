@@ -1,0 +1,64 @@
+.m-service-card {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding-left: 0;
+}
+
+.m-service-card_item {
+  background-color: $colors['main-yellow'];
+  width: 100%;
+  max-width: 300px;
+  margin: 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 20px $colors['light-gray'];
+  opacity: 0;
+  animation: fadeUp .5s ease forwards;
+
+  for $i in (1..10) {
+    &:nth-child({$i}) {
+      animation-delay: ($i - 1) * .12s;
+    }
+  }
+}
+
+.m-service-card_head {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    margin: 0;
+  }
+}
+
+.m-service-card_img {
+  width: 100%;
+}
+
+.m-service-card_body {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.m-service-card_body-txt {
+  width: 50%;
+
+  &:nth-child(2n) {
+    text-align: right;
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,11 +1,16 @@
-<p>client-service-list works!</p>
-
-<ul *ngFor="let item of services">
-  <li style="background-color: cornsilk;">
-    <p>{{ item.status }}</p>
-    <p>{{ item.delivery_date }}</p>
-    <p>{{ item.name }}</p>
-    <p>{{ item.client?.name }}</p>
-    <p>{{ item.client?.vehicle }}</p>
+<ul class="m-service-card o-recent-services">
+  <li *ngFor="let item of services" class="m-service-card_item">
+    <div class="m-service-card_head">
+      <p class="m-service-card_head-date">{{ item.delivery_date.slice(0, 10) }}</p>
+      <p class="m-service-card_head-status">{{ statusEnum[item.status - 1] }}</p>
+    </div>
+    <img class="m-service-card_img" src="https://dummyimage.com/300x200/000/fff" alt="">
+    <div class="m-service-card_body">
+      <p class="m-service-card_body-txt"><strong>{{ item.client?.name }}</strong></p>
+      <p class="m-service-card_body-txt">{{ item.client?.vehicle?.name }}</p>
+      <p class="m-service-card_body-txt">{{ item.service?.name }}</p>
+      <p class="m-service-card_body-txt" *ngIf="item.status_payment === 1">R$ {{ item.price.toFixed(2) }}</p>
+      <p class="m-service-card_body-txt" *ngIf="item.status_payment === 2">Pago</p>
+    </div>
   </li>
 </ul>

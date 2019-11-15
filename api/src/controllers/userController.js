@@ -25,7 +25,15 @@ module.exports = {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     const cripty = await bcrypt.compare(password, user.password);
-    // const token = await jwtSecret.generateToken({ repairShop: user.repairShop });
+    const token = await jwtSecret.generateToken({ repairShop: user.repairShop });
+
+    user.token = token;
+
+    try {
+      await User.updateOne({ email }, user);
+    } catch (err) {
+      res.sendStatus(500).end();
+    }
 
     if (!user) res.sendStatus(404).end();
     if (!cripty) res.sendStatus(401).end();
@@ -59,7 +67,7 @@ module.exports = {
   async update(req, res) {
     const payload = req.body;
     try {
-      const user = await User.findByIdAndUpdate(payload._id, req.body);
+      const user = await User.findByIdAndUpdate(payload._id, payload);
       if (user) {
         res.sendStatus(204).end();
       } else {

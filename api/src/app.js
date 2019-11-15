@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const database = require('./config/database');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const metrol = require('./config/metrol.js');
 
 const app = express();
 const port = normalizePort(process.env.PORT || '8000');
@@ -17,7 +18,7 @@ dotenv.config();
 app.use(express.urlencoded({ extended: false }));
 app.use(router);
 
-app.listen(port, () => {
+app.listen(port, console.log(metrol),() => {
   notifier.notify({
     title: `Metrol: ${port}`,
     message: 'Build succesfull'

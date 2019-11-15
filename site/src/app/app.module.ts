@@ -14,6 +14,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DefaultComponent } from './template/default/default.component';
 import { MenuComponent } from './ui/menu/menu.component';
 import { ClientServiceListComponent } from './client-service/client-service-list/client-service-list.component';
+import { ClientsListComponent } from './clients/clients-list/clients-list.component';
+import { ClientsComponent } from './clients/clients/clients.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './services/auth/token.interceptor';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,9 @@ import { ClientServiceListComponent } from './client-service/client-service-list
     DashboardComponent,
     DefaultComponent,
     MenuComponent,
-    ClientServiceListComponent
+    ClientServiceListComponent,
+    ClientsListComponent,
+    ClientsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +38,17 @@ import { ClientServiceListComponent } from './client-service/client-service-list
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxLoadingModule.forRoot({})
   ],
-  providers: [ CookieService ],
+  providers: [
+    CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

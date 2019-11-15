@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiBaseURL: 'https://metrol-api/herokuapp.com/'
 };

@@ -16,18 +16,23 @@ export class LoginComponent implements OnInit {
     private cookie: CookieService
   ) { }
 
-  user: any = {}
+  user: any = {};
+  loading: boolean = false
 
   ngOnInit() {
   }
 
   async login() {
+    this.loading = true;
+
     try {
       const response = await this.service.auth(this.user);
-      this.cookie.set('metrol_token', response['token']);
+      this.cookie.set('metrol_token', response['token'], 86400);
       this.router.navigate(['/']);
     } catch (err) {
       alert(err);
     }
+
+    this.loading = false;
   }
 }

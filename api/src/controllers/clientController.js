@@ -3,6 +3,8 @@ const Client = require('../models/Client');
 module.exports = {
   async index(req, res) {
     const { repairShop } = req;
+    console.log(repairShop);
+
 
     try {
       const response = await Client.find({ repairShop }).populate('repairShop').populate('vehicle');

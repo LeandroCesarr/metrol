@@ -5,6 +5,7 @@ import { DefaultComponent } from './template/default/default.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ClientsComponent } from './clients/clients/clients.component'
 import { AuthGuard } from './services/auth/auth.guard';
 
 
@@ -15,6 +16,14 @@ const routes: Routes = [
     canActivate: [ AuthGuard ],
     children: [
       { path: '', component: HomeComponent }
+    ]
+  },
+  {
+    path: 'clients',
+    component: DefaultComponent,
+    canActivate: [ AuthGuard ],
+    children: [
+      { path: '', component: ClientsComponent }
     ]
   },
   { path: 'dash', component: DashboardComponent, canActivate: [ AuthGuard ] },

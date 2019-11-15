@@ -3,7 +3,14 @@ const ClientService = require('../models/ClientService');
 module.exports = {
   async index(req, res) {
     try {
-      const response = await ClientService.find().populate('client');
+      const response = await ClientService.find()
+      .populate('service')
+      .populate({
+        path: 'client',
+        populate: {
+          path: 'vehicle'
+        }
+      })
       res.send(response);
     } catch (error) {
       res.send(error);

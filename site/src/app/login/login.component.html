@@ -1,7 +1,7 @@
 
 <main class="t-login">
   <div class="t-login_hld">
-    <form method="POST" class="t-login_form" (ngSubmit)="login(f)">
+    <form method="POST" class="t-login_form" (ngSubmit)="login()">
       <mat-form-field>
         <input type="email" matInput placeholder="E-mail" required name="email" [(ngModel)]="user.email">
       </mat-form-field>
@@ -13,4 +13,5 @@
       <a href="/" mat-raised-button>Esqueci a senha</a>
     </form>
   </div>
+  <!-- <ngx-loading [show]="loading" [template]="loadingTemplate"></ngx-loading> -->
 </main>
