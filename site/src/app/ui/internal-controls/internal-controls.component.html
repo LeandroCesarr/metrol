@@ -1,0 +1,17 @@
+<ul class="m-internal-controls">
+  <li class="m-internal-controls_item">
+    <a mat-raised-button color="accent" routerLink="/{{ routerName }}/new">
+      <mat-icon>add_circle_outline</mat-icon> Novo {{ pageName }}
+    </a>
+  </li>
+  <li class="m-internal-controls_item">
+    <a mat-raised-button color="accent" (click)="filter()">
+      <mat-icon>filter_list</mat-icon> Filtrar
+    </a>
+  </li>
+  <li class="m-internal-controls_item">
+    <a mat-raised-button color="accent" (click)="organizer()">
+      <mat-icon>sort</mat-icon> Organizar
+    </a>
+  </li>
+</ul>

@@ -1,22 +1,25 @@
-<nav class="o-menu" [ngClass]="{ 'active': active === true }">
-  <button class="o-menu_button" mat-button (click)="active = !active">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <ul class="o-menu_list">
-    <li class="o-menu_item">
-      <a [routerLink]="['/']" class="o-menu_link">Home</a>
-    </li>
-    <li class="o-menu_item">
-      <a [routerLinkActive]="['active']" [routerLink]="['/login']" class="o-menu_link">Serviços</a>
-    </li>
-    <li class="o-menu_item">
-      <a [routerLinkActive]="['active']" [routerLink]="['/login']" class="o-menu_link">Estoque</a>
-    </li>
-    <li class="o-menu_item">
-      <a [routerLinkActive]="['active']" [routerLink]="['/clients']" class="o-menu_link">Clientes</a>
-    </li>
-    <li class="o-menu_item">
-      <a [routerLinkActive]="['active']" [routerLink]="['/login']" class="o-menu_link">Configurações</a>
-    </li>
-  </ul>
-</nav>
+<div class="o-menu">
+  <span class="o-menu_overlay" [ngClass]="{ 'active': active === true }" (click)="active = !active"></span>
+  <nav class="o-menu_ctn" [ngClass]="{ 'active': active === true }">
+    <button class="o-menu_button" mat-button (click)="active = !active">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <ul class="o-menu_list">
+      <li class="o-menu_item">
+        <a [routerLink]="['/']" class="o-menu_link">Home</a>
+      </li>
+      <li class="o-menu_item">
+        <a [routerLinkActive]="['active']" [routerLink]="['/login']" class="o-menu_link">Serviços</a>
+      </li>
+      <li class="o-menu_item">
+        <a [routerLinkActive]="['active']" [routerLink]="['/login']" class="o-menu_link">Estoque</a>
+      </li>
+      <li class="o-menu_item">
+        <a [routerLinkActive]="['active']" [routerLink]="['/clients']" class="o-menu_link">Clientes</a>
+      </li>
+      <li class="o-menu_item">
+        <a [routerLinkActive]="['active']" [routerLink]="['/login']" class="o-menu_link">Configurações</a>
+      </li>
+    </ul>
+  </nav>
+</div>

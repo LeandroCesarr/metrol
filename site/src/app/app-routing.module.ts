@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ClientsComponent } from './clients/clients/clients.component'
 import { AuthGuard } from './services/auth/auth.guard';
+import { ClientsFormComponent } from './clients/clients-form/clients-form.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
     component: DefaultComponent,
     canActivate: [ AuthGuard ],
     children: [
-      { path: '', component: ClientsComponent }
+      { path: '', component: ClientsComponent },
+      { path: 'new', component: ClientsFormComponent }
     ]
   },
   { path: 'dash', component: DashboardComponent, canActivate: [ AuthGuard ] },

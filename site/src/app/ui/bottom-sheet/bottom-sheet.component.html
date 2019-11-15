@@ -1,0 +1,7 @@
+<mat-nav-list class="m-bottom-sheet">
+  <div mat-list-item *ngFor="let item of data">
+    <button mat-raised-button color="accent" (click)="emitValue(item.value)">
+      <span mat-line>{{ item.name }}</span>
+    </button>
+  </div>
+</mat-nav-list>

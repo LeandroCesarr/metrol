@@ -13,7 +13,7 @@ export class ClientServiceListComponent implements OnInit {
     private service: ClientServiceService,
   ) { }
   private services: any = [];
-  private statusEnum: Array<string> = ['Ativo', 'Pausado', 'Finalizado']
+  private statusEnum: Array<string> = ['Ativo', 'Pausado', 'Finalizado'];
 
   ngOnInit() {
     this.index();

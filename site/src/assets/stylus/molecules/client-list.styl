@@ -1,0 +1,19 @@
+.m-client-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.m-client-list_item {
+  border-radius: 6px;
+  box-shadow: 0 0 20px $colors['light-gray'];
+  padding: 20px;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp .5s ease forwards;
+
+  for $i in (1..10) {
+    &:nth-child({$i}) {
+      animation-delay: ($i - 1) * .12s;
+    }
+  }
+}

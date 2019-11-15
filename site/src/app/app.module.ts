@@ -19,6 +19,10 @@ import { ClientsComponent } from './clients/clients/clients.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/auth/token.interceptor';
 import { NgxLoadingModule } from 'ngx-loading';
+import { ClientsFormComponent } from './clients/clients-form/clients-form.component';
+import { InternalControlsComponent } from './ui/internal-controls/internal-controls.component';
+import { BottomSheetComponent } from './ui/bottom-sheet/bottom-sheet.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { NgxLoadingModule } from 'ngx-loading';
     MenuComponent,
     ClientServiceListComponent,
     ClientsListComponent,
-    ClientsComponent
+    ClientsComponent,
+    ClientsFormComponent,
+    ClientsFormComponent,
+    InternalControlsComponent,
+    BottomSheetComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +57,7 @@ import { NgxLoadingModule } from 'ngx-loading';
       multi: true
     }
   ],
+  entryComponents: [ BottomSheetComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
