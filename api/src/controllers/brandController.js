@@ -2,8 +2,10 @@ const Brand = require('../models/Brand');
 
 module.exports = {
   async index(req, res) {
+    const { repairShop } = req;
+
     try {
-      const response = await Brand.find();
+      const response = await Brand.find({ repairShop });
       res.send(response);
     } catch (error) {
       res.send(error);

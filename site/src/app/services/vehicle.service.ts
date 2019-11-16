@@ -5,16 +5,12 @@ import { environment as env } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ClientService {
+export class VehicleService {
 
   constructor(private http: HttpClient) { }
-  private entryPoint: string = `${env.apiBaseURL}client`;
+  private entryPoint: string = `${env.apiBaseURL}vehicle`;
 
   index() {
     return this.http.get(this.entryPoint).toPromise();
-  }
-
-  create(user: Object) {
-    return this.http.post(this.entryPoint, user).toPromise();
   }
 }

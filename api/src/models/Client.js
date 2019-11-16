@@ -7,8 +7,8 @@ const schema = mongoose.Schema({
   vehicle: { type: mongoose.ObjectId, ref: 'Vehicle' },
   repairShop: { type: mongoose.ObjectId, ref: 'RepairShop'},
   cpf: { type: String, required: true, index: { unique: true} },
-  address: { type: String, required: true },
-  
+  address: { type: String },
+
 }, {
   timestamps: true,
 });

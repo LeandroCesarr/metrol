@@ -2,8 +2,10 @@ const ClientService = require('../models/ClientService');
 
 module.exports = {
   async index(req, res) {
+    const { repairShop } = req;
+
     try {
-      const response = await ClientService.find()
+      const response = await ClientService.find({ repairShop })
       .populate('service')
       .populate({
         path: 'client',

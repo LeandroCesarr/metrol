@@ -2,8 +2,10 @@ const Product = require('../models/Product');
 
 module.exports = {
   async index(req, res) {
+    const { repairShop } = req;
+
     try {
-      const response = await Product.find().populate('repairShop').populate('category');
+      const response = await Product.find({ repairShop }).populate('repairShop').populate('category');
       res.send(response);
     } catch (error) {
       res.send(error);

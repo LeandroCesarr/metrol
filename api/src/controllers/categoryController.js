@@ -2,8 +2,10 @@ const Category = require('../models/Category');
 
 module.exports = {
   async index(req, res) {
+    const { repairShop } = req;
+
     try {
-      const response = await Category.find();
+      const response = await Category.find({ repairShop });
       res.send(response);
     } catch (error) {
       res.send(error);

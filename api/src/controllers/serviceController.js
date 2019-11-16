@@ -2,8 +2,10 @@ const Service = require('../models/Service');
 
 module.exports = {
   async index(req, res) {
+    const { repairShop } = req;
+
     try {
-      const response = await Service.find().populate('repairShop');
+      const response = await Service.find({ repairShop }).populate('repairShop');
       res.send(response);
     } catch (error) {
       res.send(error);

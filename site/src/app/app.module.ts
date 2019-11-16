@@ -22,7 +22,7 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { ClientsFormComponent } from './clients/clients-form/clients-form.component';
 import { InternalControlsComponent } from './ui/internal-controls/internal-controls.component';
 import { BottomSheetComponent } from './ui/bottom-sheet/bottom-sheet.component';
-
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,8 @@ import { BottomSheetComponent } from './ui/bottom-sheet/bottom-sheet.component';
     MaterialModule,
     FormsModule,
     HttpClientModule,
-    NgxLoadingModule.forRoot({})
+    NgxLoadingModule.forRoot({}),
+    NgxMaskModule.forRoot()
   ],
   providers: [
     CookieService,

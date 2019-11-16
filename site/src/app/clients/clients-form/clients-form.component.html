@@ -1,1 +1,49 @@
-<p>clients-form works!</p>
+<h2>{{ title }}</h2>
+
+<form method="POST" class="m-form" #f="ngForm" (ngSubmit)="submit(f)">
+  <small class="m-form_small">Campos com * sao obrigatórios</small>
+  <div class="m-form_field full">
+    <mat-form-field>
+      <input matInput placeholder="Nome completo" required [(ngModel)]="client.name" name="name">
+    </mat-form-field>
+  </div>
+
+  <div class="m-form_field half">
+    <mat-form-field>
+      <input matInput placeholder="Telefone" [(ngModel)]="client.phone" name="phone" mask="(00) 000000009">
+    </mat-form-field>
+  </div>
+
+  <div class="m-form_field half right">
+    <mat-form-field>
+      <mat-select placeholder="Veículo" required [(ngModel)]="client.vehicle" name="vehicle">
+        <mat-option *ngFor="let item of vehicles" [value]="item._id">
+          {{ item.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="m-form_field half">
+    <mat-form-field>
+      <input matInput placeholder="CPF" required [(ngModel)]="client.cpf" name="cpf" mask="000.000.000-00">
+    </mat-form-field>
+  </div>
+
+  <div class="m-form_field half right">
+      <mat-form-field>
+        <input matInput placeholder="email" required [(ngModel)]="client.email" name="email" type="email">
+      </mat-form-field>
+    </div>
+
+  <div class="m-form_field full">
+    <mat-form-field>
+      <input matInput placeholder="Endereço" [(ngModel)]="client.address" name="address">
+    </mat-form-field>
+  </div>
+
+  <div class="m-form_submit-hld">
+    <button class="m-form_submit" type="submit" mat-raised-button color="accent">Salvar</button>
+  </div>
+  <ngx-loading [show]="loading"></ngx-loading>
+</form>
