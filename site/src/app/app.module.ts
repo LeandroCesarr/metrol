@@ -23,6 +23,9 @@ import { ClientsFormComponent } from './clients/clients-form/clients-form.compon
 import { InternalControlsComponent } from './ui/internal-controls/internal-controls.component';
 import { BottomSheetComponent } from './ui/bottom-sheet/bottom-sheet.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { ConfirmDlgComponent } from './ui/confirm-dlg/confirm-dlg.component';
+import { MatDialogModule } from '@angular/material';
+import { ServicesComponent } from './client-service/services/services.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { NgxMaskModule } from 'ngx-mask';
     ClientsFormComponent,
     ClientsFormComponent,
     InternalControlsComponent,
-    BottomSheetComponent
+    BottomSheetComponent,
+    ConfirmDlgComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +52,7 @@ import { NgxMaskModule } from 'ngx-mask';
     MaterialModule,
     FormsModule,
     HttpClientModule,
+    MatDialogModule,
     NgxLoadingModule.forRoot({}),
     NgxMaskModule.forRoot()
   ],
@@ -58,7 +64,7 @@ import { NgxMaskModule } from 'ngx-mask';
       multi: true
     }
   ],
-  entryComponents: [ BottomSheetComponent ],
+  entryComponents: [ BottomSheetComponent, ConfirmDlgComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

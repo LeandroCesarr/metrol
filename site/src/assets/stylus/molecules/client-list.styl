@@ -10,10 +10,63 @@
   margin-bottom: 20px;
   opacity: 0;
   animation: fadeUp .5s ease forwards;
+  display: flex;
+  align-items: center;
+  min-height: 140px;
+  position: relative;
+  padding-left: 120px;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 20px;
+    left: 10px;
+    background-size: contain;
+    background-image: url('assets/img/avatar.png')
+  }
+
 
   for $i in (1..10) {
     &:nth-child({$i}) {
       animation-delay: ($i - 1) * .12s;
     }
+  }
+}
+
+.m-clients-list_data {
+  flex: 4;
+}
+
+.m-clients-list_controls {
+  transition: opacity .2s ease;
+
+  a:first-child {
+    margin-right: 15px;
+  }
+}
+
+@media all and (min-width: 1023px) {
+  .m-client-list_item:hover {
+    .m-clients-list_controls {
+      opacity: 1;
+    }
+  }
+
+  .m-clients-list_controls {
+    opacity: 0;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .m-client-list_item {
+    display: block;
+  }
+
+  .m-clients-list_data {
+    flex: auto;
+    margin-bottom: 10px;
   }
 }

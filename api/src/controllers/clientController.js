@@ -23,6 +23,17 @@ module.exports = {
     }
   },
 
+  async indexOfnoPopulate(req, res) {
+    try {
+      const response = await Client.findById(req.params.id);
+
+      if (response) res.send(response);
+      else res.sendStatus(404).end();
+    } catch (error) {
+      res.send(error);
+    }
+  },
+
   async update(req, res) {
     const payload = req.body;
 

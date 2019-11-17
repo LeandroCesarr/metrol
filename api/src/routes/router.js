@@ -61,6 +61,7 @@ router.put('/vehicle', vehicle.update);
 router.post('/vehicle', vehicle.create);
 router.delete('/vehicle', vehicle.delete);
 
+router.get('/client/np/:id', auth, client.indexOfnoPopulate);
 router.get('/client/:id', auth, client.indexOf);
 router.get('/client', auth, client.index);
 router.put('/client', auth, client.update);

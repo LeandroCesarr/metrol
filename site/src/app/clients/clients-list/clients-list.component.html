@@ -1,7 +1,17 @@
 <ul class="m-client-list">
   <li class="m-client-list_item" *ngFor="let item of clients">
-    <p class="m-client-list_item-name"><strong>{{ item.name }}</strong></p>
-    <p class="m-client-list_item-email">{{ item.email }}</p>
-    <p class="m-client-list_item-phone">{{ item.phone }}</p>
+    <div class="m-clients-list_data">
+      <p class="m-client-list_item-name"><strong>{{ item.name }}</strong></p>
+      <p class="m-client-list_item-email">{{ item.email }}</p>
+      <p class="m-client-list_item-phone">{{ item.phone }}</p>
+    </div>
+    <div class="m-clients-list_controls">
+      <a mat-raised-button color="accent" [routerLink]="['/clients/new', item._id]">
+        <mat-icon>edit</mat-icon>
+      </a>
+      <a mat-raised-button color="warn" (click)="delete(item._id)">
+        <mat-icon>delete_forever</mat-icon>
+      </a>
+    </div>
   </li>
 </ul>

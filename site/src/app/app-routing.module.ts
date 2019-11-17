@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ClientsComponent } from './clients/clients/clients.component'
 import { AuthGuard } from './services/auth/auth.guard';
 import { ClientsFormComponent } from './clients/clients-form/clients-form.component';
+import { ServicesComponent } from './client-service/services/services.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,16 @@ const routes: Routes = [
     canActivate: [ AuthGuard ],
     children: [
       { path: '', component: ClientsComponent },
-      { path: 'new', component: ClientsFormComponent }
+      { path: 'new', component: ClientsFormComponent },
+      { path: 'new/:id', component: ClientsFormComponent }
+    ]
+  },
+  {
+    path: 'services',
+    component: DefaultComponent,
+    canActivate: [ AuthGuard ],
+    children: [
+      { path: '', component: ServicesComponent }
     ]
   },
   { path: 'dash', component: DashboardComponent, canActivate: [ AuthGuard ] },
