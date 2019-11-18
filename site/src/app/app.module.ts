@@ -6,17 +6,16 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { HomeComponent } from './home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DefaultComponent } from './template/default/default.component';
 import { MenuComponent } from './ui/menu/menu.component';
 import { ClientServiceListComponent } from './client-service/client-service-list/client-service-list.component';
 import { ClientsListComponent } from './clients/clients-list/clients-list.component';
 import { ClientsComponent } from './clients/clients/clients.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/auth/token.interceptor';
 import { NgxLoadingModule } from 'ngx-loading';
 import { ClientsFormComponent } from './clients/clients-form/clients-form.component';
@@ -26,6 +25,8 @@ import { NgxMaskModule } from 'ngx-mask';
 import { ConfirmDlgComponent } from './ui/confirm-dlg/confirm-dlg.component';
 import { MatDialogModule } from '@angular/material';
 import { ServicesComponent } from './client-service/services/services.component';
+import { ClientServiceFormComponent } from './client-service/client-service-form/client-service-form.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -43,11 +44,13 @@ import { ServicesComponent } from './client-service/services/services.component'
     InternalControlsComponent,
     BottomSheetComponent,
     ConfirmDlgComponent,
-    ServicesComponent
+    ServicesComponent,
+    ClientServiceFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
@@ -58,6 +61,7 @@ import { ServicesComponent } from './client-service/services/services.component'
   ],
   providers: [
     CookieService,
+    DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
