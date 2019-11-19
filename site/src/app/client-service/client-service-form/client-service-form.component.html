@@ -5,68 +5,53 @@
 
   <div class="m-form_field half">
     <mat-form-field>
-      <input type="text" placeholder="Cliente" matInput [formControl]="formControl" [(ngModel)]="service.client" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let item of clients" [value]="item._id">
-          {{ item.name }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </div>
-
-  <div class="m-form_field half right">
-    <mat-form-field>
-      <input type="text" placeholder="Serviço" matInput [formControl]="formControl" [(ngModel)]="service.client" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let item of clients" [value]="item._id">
-          {{ item.name }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </div>
-
-  <div class="m-form_field half">
-    <mat-form-field>
-      <mat-select placeholder="Status do serviço" required [(ngModel)]="service.status" name="status">
-        <mat-option *ngFor="let item of status" [value]="item.value">
-          {{ item.name }}
-        </mat-option>
+      <mat-select placeholder="Cliente" required [(ngModel)]="clientService.client" name="client">
+        <mat-option *ngFor="let item of clients" [value]="item._id">{{ item.name }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
 
   <div class="m-form_field half right">
     <mat-form-field>
-      <mat-select placeholder="Status do pagamento" required [(ngModel)]="service.status_payment" name="status_payment">
-        <mat-option *ngFor="let item of statusPayment" [value]="item.value">
-          {{ item.name }}
-        </mat-option>
+      <mat-select placeholder="Serviço" required [(ngModel)]="clientService.service" name="service">
+        <mat-option *ngFor="let item of services" [value]="item._id">{{ item.name }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
 
   <div class="m-form_field half">
     <mat-form-field>
-      <input matInput placeholder="Preço" required [(ngModel)]="service.price" name="price">
+      <mat-select placeholder="Status do serviço" required [(ngModel)]="clientService.status" name="status">
+        <mat-option [value]="1">Ativo</mat-option>
+        <mat-option [value]="2">Pausado</mat-option>
+        <mat-option [value]="3">Finalizado</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="m-form_field half right">
+    <mat-form-field>
+      <mat-select placeholder="Status do pagamento" required [(ngModel)]="clientService.status_payment" name="status_payment">
+        <mat-option [value]="2">Pago</mat-option>
+        <mat-option [value]="1">Não pago</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="m-form_field half">
+    <mat-form-field>
+      <input matInput placeholder="Preço" required [(ngModel)]="clientService.price" name="price">
     </mat-form-field>
   </div>
 
   <div class="m-form_field half right">
       <mat-form-field>
-        <input matInput [matDatepicker]="delivery_date" placeholder="Data de entrega" [(ngModel)]="service.delivery_date"
+        <input matInput [matDatepicker]="delivery_date" placeholder="Data de entrega" [(ngModel)]="clientService.delivery_date"
          name="delivery_date" required>
         <mat-datepicker-toggle matSuffix [for]="delivery_date"></mat-datepicker-toggle>
         <mat-datepicker #delivery_date></mat-datepicker>
       </mat-form-field>
     </div>
-
-  <div class="m-form_field full">
-    <mat-form-field>
-      <input matInput placeholder="Endereço" [(ngModel)]="service.address" name="address">
-    </mat-form-field>
-  </div>
-
-
 
   <div class="m-form_submit-hld">
     <button class="m-form_submit" type="submit" mat-raised-button color="accent">Salvar</button>

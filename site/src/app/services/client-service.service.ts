@@ -13,4 +13,8 @@ export class ClientServiceService {
   index() {
     return this.http.get(this.entryPoint).toPromise();
   }
+
+  create(user: any) {
+    return this.http.post(this.entryPoint, user).toPromise();
+  }
 }

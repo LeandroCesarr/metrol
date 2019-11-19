@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
 import { ClientService } from '../../services/client.service';
-import { FormControl } from '@angular/forms';
+import { ServiceService } from '../../services/service.service';
+import { ClientServiceService } from '../../services/client-service.service';
+import { Router, ActivatedRoute } from "@angular/router";
+import { MatSnackBar } from "@angular/material";
+import * as moment from 'moment';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-client-service-form',
@@ -10,19 +14,24 @@ import { FormControl } from '@angular/forms';
 export class ClientServiceFormComponent implements OnInit {
 
   constructor(
-    private datePipe: DatePipe,
     private clientSrv: ClientService,
+    private serviceSrv: ServiceService,
+    private clientServiceSrv: ClientServiceService,
+    private snack: MatSnackBar,
+    private router: Router,
+    private actRoute: ActivatedRoute,
   ) { }
 
   private title: string = 'Novo serviço'
-  private service: any = {};
+  private clientService: any = {};
   private clients: any = [];
-  private status: Array<Object> = [];
-  private status_payment: Array<Object> = [];
-  private formControl: FormControl = new FormControl();
+  private services: any = [];
+  private loading: boolean = false;
+  private responseMsg: string = '';
 
   ngOnInit() {
     this.getClients();
+    this.getServices();
   }
 
   // convertDate(value: any) {
@@ -34,8 +43,26 @@ export class ClientServiceFormComponent implements OnInit {
     this.clients = await this.clientSrv.index();
   }
 
-  // submit() {
+  async getServices() {
+    this.services = await this.serviceSrv.index();
+  }
 
-  // }
+  async submit(form: NgForm) {
+    if (form.valid) {
+      this.loading = true;
+      this.clientService.delivery_date = moment(this.clientService.delivery_date).format();
 
+      try {
+        await this.clientServiceSrv[this.clientService._id ? 'update': 'create'](this.clientService)
+        this.responseMsg = this.clientService._id ? 'Serviço atualizado com sucesso!': 'Serviço criado com sucesso!';
+        this.snack.open(this.responseMsg, 'Entendi', { duration: 3000 });
+
+        // this.router.navigate(['/services'])
+      } catch (err) {
+        this.snack.open('Parece que algo deu errado, os dados nao foram salvos', 'Entendi' ,{ duration: 3000 })
+      }
+
+      this.loading = false;
+    }
+  }
 }

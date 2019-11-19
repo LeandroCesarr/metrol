@@ -26,7 +26,6 @@ import { ConfirmDlgComponent } from './ui/confirm-dlg/confirm-dlg.component';
 import { MatDialogModule } from '@angular/material';
 import { ServicesComponent } from './client-service/services/services.component';
 import { ClientServiceFormComponent } from './client-service/client-service-form/client-service-form.component';
-import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -61,7 +60,6 @@ import { DatePipe } from '@angular/common';
   ],
   providers: [
     CookieService,
-    DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
