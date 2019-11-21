@@ -26,6 +26,7 @@ import { ConfirmDlgComponent } from './ui/confirm-dlg/confirm-dlg.component';
 import { MatDialogModule } from '@angular/material';
 import { ServicesComponent } from './client-service/services/services.component';
 import { ClientServiceFormComponent } from './client-service/client-service-form/client-service-form.component';
+import { ClientServiceHighlightComponent } from './client-service/client-service-highlight/client-service-highlight.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ClientServiceFormComponent } from './client-service/client-service-form
     BottomSheetComponent,
     ConfirmDlgComponent,
     ServicesComponent,
-    ClientServiceFormComponent
+    ClientServiceFormComponent,
+    ClientServiceHighlightComponent
   ],
   imports: [
     BrowserModule,

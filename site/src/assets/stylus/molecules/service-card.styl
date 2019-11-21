@@ -7,16 +7,18 @@
 }
 
 .m-service-card_item {
-  background-color: $colors['main-yellow'];
+  background-color: #fcfcfc;
   width: 100%;
   max-width: 300px;
   margin: 10px;
   border-radius: 6px;
-  box-shadow: 0 0 20px $colors['light-gray'];
+  box-shadow: 0 3px 5px $colors['light-gray'];
   opacity: 0;
+  overflow: hidden;
   animation: fadeUp .5s ease forwards;
+  cursor: pointer;
 
-  for $i in (1..10) {
+  for $i in (1..100) {
     &:nth-child({$i}) {
       animation-delay: ($i - 1) * .12s;
     }
@@ -27,6 +29,18 @@
   padding: 10px;
   display: flex;
   justify-content: space-between;
+
+  &.active {
+    background-color: $colors['main-yellow'];
+  }
+
+  &.paused {
+    background-color: $colors['main-red'];
+  }
+
+  &.finished {
+    background-color: $colors['main-green'];
+  }
 
   p {
     margin: 0;
@@ -39,14 +53,8 @@
 
 .m-service-card_body {
   padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .m-service-card_body-txt {
-  width: 50%;
 
-  &:nth-child(2n) {
-    text-align: right;
-  }
 }

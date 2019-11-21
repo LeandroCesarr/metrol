@@ -16,7 +16,7 @@ const schema = mongoose.Schema({
   price: { type: Number, require: true },
   delivery_date: { type: Date, required: true },
   client: { type: mongoose.ObjectId, ref: 'Client', required: true },
-  service: { type: mongoose.ObjectId, ref: 'Service', required: true },
+  service: [{ type: mongoose.ObjectId, ref: 'Service', required: true }],
   repairShop: { type: mongoose.ObjectId, ref: 'RepairShop', required: true }
 }, {
   timestamps: true,

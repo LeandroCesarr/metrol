@@ -10,6 +10,7 @@ import { AuthGuard } from './services/auth/auth.guard';
 import { ClientsFormComponent } from './clients/clients-form/clients-form.component';
 import { ServicesComponent } from './client-service/services/services.component';
 import { ClientServiceFormComponent } from './client-service/client-service-form/client-service-form.component';
+import { ClientServiceHighlightComponent } from './client-service/client-service-highlight/client-service-highlight.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
     children: [
       { path: '', component: ServicesComponent },
       { path: 'new', component: ClientServiceFormComponent },
+      { path: ':id', component: ClientServiceHighlightComponent },
     ]
   },
   { path: 'dash', component: DashboardComponent, canActivate: [ AuthGuard ] },
