@@ -8,6 +8,7 @@ export class ClientServiceListComponent implements OnInit {
 
   @Input()
   onHome: boolean;
+  serviceId: string;
 
   constructor(
     private service: ClientServiceService,
@@ -25,6 +26,10 @@ export class ClientServiceListComponent implements OnInit {
 
       if (this.onHome) {
         this.services = this.services.filter((el: any) => el.status === 1)
+      }
+
+      if (this.serviceId) {
+        this.services = this.services.filter((el: any) => el.client._id === this.serviceId)
       }
     } catch (err) {
       this.services[0] = err;

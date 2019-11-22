@@ -29,15 +29,22 @@ export class ClientServiceFormComponent implements OnInit {
   private loading: boolean = false;
   private responseMsg: string = '';
 
-  ngOnInit() {
+  async ngOnInit() {
     this.getClients();
     this.getServices();
-  }
 
-  // convertDate(value: any) {
-  //   console.log(this.datePipe.transform(value.target.value, 'yy-MM-dd'));
-  //   this.service.delivery_date = this.datePipe.transform(value.target.value, 'yy-MM-dd');
-  // }
+    const params = this.actRoute.snapshot.params;
+    if (params['id']) {
+      this.loading = true;
+      try {
+        this.clientService = await this.clientServiceSrv.indexOfNp(params['id']);
+        this.title = `Editando: #${this.clientService._id}`;
+      } catch (err) {
+        this.snack.open('Parece que algo deu errado', 'Entendi' ,{ duration: 3000 });
+      }
+      this.loading = false;
+    }
+  }
 
   async getClients() {
     this.clients = await this.clientSrv.index();
@@ -48,6 +55,8 @@ export class ClientServiceFormComponent implements OnInit {
   }
 
   async submit(form: NgForm) {
+    const params = this.actRoute.snapshot.params;
+
     if (form.valid) {
       this.loading = true;
       this.clientService.delivery_date = moment(this.clientService.delivery_date).format();
@@ -57,7 +66,12 @@ export class ClientServiceFormComponent implements OnInit {
         this.responseMsg = this.clientService._id ? 'Serviço atualizado com sucesso!': 'Serviço criado com sucesso!';
         this.snack.open(this.responseMsg, 'Entendi', { duration: 3000 });
 
-        // this.router.navigate(['/services'])
+        if (!params['id']) {
+          this.router.navigate(['/services'])
+        } else {
+          this.router.navigate([`/services/${params['id']}`])
+        }
+
       } catch (err) {
         this.snack.open('Parece que algo deu errado, os dados nao foram salvos', 'Entendi' ,{ duration: 3000 })
       }

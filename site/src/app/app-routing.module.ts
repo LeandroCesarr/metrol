@@ -39,6 +39,7 @@ const routes: Routes = [
     children: [
       { path: '', component: ServicesComponent },
       { path: 'new', component: ClientServiceFormComponent },
+      { path: 'new/:id', component: ClientServiceFormComponent },
       { path: ':id', component: ClientServiceHighlightComponent },
     ]
   },

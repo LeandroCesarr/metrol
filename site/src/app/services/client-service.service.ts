@@ -14,7 +14,25 @@ export class ClientServiceService {
     return this.http.get(this.entryPoint).toPromise();
   }
 
+  indexOf(id: string) {
+    return this.http.get(`${this.entryPoint}/${id}`).toPromise();
+  }
+
+  indexOfNp(id: string) {
+    return this.http.get(`${this.entryPoint}/np/${id}`).toPromise();
+  }
+
   create(user: any) {
     return this.http.post(this.entryPoint, user).toPromise();
+  }
+
+  update(user: any) {
+    return this.http.put(this.entryPoint, user).toPromise();
+  }
+
+  delete(id: any) {
+    return this.http.request('delete', this.entryPoint, {
+      body: { _id: id }
+    }).toPromise();
   }
 }

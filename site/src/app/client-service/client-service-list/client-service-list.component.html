@@ -7,8 +7,8 @@
     <div class="m-service-card_body">
       <p class="m-service-card_body-txt"><strong>Veículo: {{ item.client?.vehicle?.name }}</strong></p>
       <p class="m-service-card_body-txt">Placa: {{ item.client?.board }}</p>
-      <p class="m-service-card_body-txt">Entrada: {{ item.createdAt }}</p>
-      <p class="m-service-card_body-txt">Entrega: {{ item.delivery_date }}</p>
+      <p class="m-service-card_body-txt">Entrada: {{ item.createdAt.slice(0, 10) }}</p>
+      <p class="m-service-card_body-txt">Entrega: {{ item.delivery_date.slice(0, 10) }}</p>
       <p class="m-service-card_body-txt" *ngIf="item.status_payment === 1">Pagamento: A pagar</p>
       <p class="m-service-card_body-txt" *ngIf="item.status_payment === 2">Pagamento: Pago</p>
     </div>

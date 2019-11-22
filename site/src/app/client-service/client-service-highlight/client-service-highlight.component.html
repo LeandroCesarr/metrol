@@ -1,1 +1,29 @@
-<p>client-service-highlight works!</p>
+<h1>Serviço: #{{ id }}</h1>
+<div class="m-clients-list_controls visible">
+  <a mat-raised-button color="accent" [routerLink]="['/services/new', id]">
+    <mat-icon>edit</mat-icon> Editar
+  </a>
+
+  <a mat-raised-button color="accent">
+    <mat-icon>check</mat-icon> Finalizar
+  </a>
+
+  <a mat-raised-button color="warn" (click)="delete(id)">
+    <mat-icon>delete_forever</mat-icon> Deletar
+  </a>
+</div>
+<hr>
+
+<p><b>Cliente</b>: {{ data.client?.name }}</p>
+<p><b>Veiculo</b>: {{ data.client?.vehicle?.name }} | {{ data/client?.board }}</p>
+<p><b>Endereço</b>: {{ data.client?.address }}</p>
+<p><b>Telefone</b>: {{ data.client?.phone }}</p>
+
+<hr>
+
+<h3>Serviços:</h3>
+<ul>
+  <li *ngFor="let item of data.service">{{ item.name }} | R$ {{ item.price }}</li>
+</ul>
+
+<hr>
