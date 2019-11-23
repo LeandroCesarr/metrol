@@ -1,0 +1,28 @@
+<h2>{{ title }}</h2>
+
+<form method="POST" class="m-form" #f="ngForm" (ngSubmit)="submit(f)">
+  <small class="m-form_small">Campos com * sao obrigatórios</small>
+
+  <div class="m-form_field full">
+    <mat-form-field>
+      <input matInput placeholder="Nome do Produto" required [(ngModel)]="storageService.name" name="name">
+    </mat-form-field>
+  </div>
+
+  <div class="m-form_field half">
+    <mat-form-field>
+      <input matInput placeholder="Preço" required [(ngModel)]="storageService.price" name="price">
+    </mat-form-field>
+  </div>
+
+  <div class="m-form_field half">
+    <mat-form-field>
+      <input matInput placeholder="Quantidade" required [(ngModel)]="storageService.quantity" name="quantity">
+    </mat-form-field>
+  </div>
+
+  <div class="m-form_submit-hld">
+    <button class="m-form_submit" type="submit" mat-raised-button color="accent">Salvar</button>
+  </div>
+  <ngx-loading [show]="loading"></ngx-loading>
+</form>

@@ -11,6 +11,9 @@ import { ClientsFormComponent } from './clients/clients-form/clients-form.compon
 import { ServicesComponent } from './client-service/services/services.component';
 import { ClientServiceFormComponent } from './client-service/client-service-form/client-service-form.component';
 import { ClientServiceHighlightComponent } from './client-service/client-service-highlight/client-service-highlight.component';
+import { StorageComponent } from './storage/storage/storage.component';
+import { StorageListComponent } from './storage/storage-list/storage-list.component';
+import { StorageFormComponent } from './storage/storage-form/storage-form.component';
 
 
 const routes: Routes = [
@@ -20,6 +23,17 @@ const routes: Routes = [
     canActivate: [ AuthGuard ],
     children: [
       { path: '', component: HomeComponent }
+    ]
+  },
+  {
+    path: 'storage',
+    component: DefaultComponent,
+    canActivate: [ AuthGuard ],
+    children: [
+      { path: '', component: StorageComponent },
+      { path: 'new', component: StorageFormComponent },
+      { path: 'new/:id', component: StorageListComponent }
+      
     ]
   },
   {

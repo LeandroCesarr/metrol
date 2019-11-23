@@ -27,6 +27,9 @@ import { MatDialogModule } from '@angular/material';
 import { ServicesComponent } from './client-service/services/services.component';
 import { ClientServiceFormComponent } from './client-service/client-service-form/client-service-form.component';
 import { ClientServiceHighlightComponent } from './client-service/client-service-highlight/client-service-highlight.component';
+import { StorageComponent } from './storage/storage/storage.component';
+import { StorageListComponent } from './storage/storage-list/storage-list.component';
+import { StorageFormComponent } from './storage/storage-form/storage-form.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { ClientServiceHighlightComponent } from './client-service/client-service
     ConfirmDlgComponent,
     ServicesComponent,
     ClientServiceFormComponent,
-    ClientServiceHighlightComponent
+    ClientServiceHighlightComponent,
+    StorageComponent,
+    StorageListComponent,
+    StorageFormComponent
   ],
   imports: [
     BrowserModule,

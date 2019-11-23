@@ -1,0 +1,11 @@
+<p>storage-list works! Alou</p>
+<ul class="m-storage-card o-recent-storages">
+  <li *ngFor="let item of storages" class="m-storage-card_item" [routerLink]="['/storages/', item._id]">
+    <div class="m-storage-card_head" [ngClass]="{ 'active': item.status === 1, 'paused': item.status === 2, 'finished': item.status === 3 }">
+      <p class="m-storage-card_head-date">{{ item.delivery_date.slice(0, 10) }}</p>
+      <p class="m-storage-card_head-status">{{ statusEnum[item.status - 1] }}</p>
+    </div>
+    <div class="m-storage-card_body">
+    </div>
+  </li>
+</ul>
