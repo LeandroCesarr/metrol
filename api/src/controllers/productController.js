@@ -5,7 +5,7 @@ module.exports = {
     const { repairShop } = req;
 
     try {
-      const response = await Product.find({ repairShop }).populate('repairShop').populate('category');
+      const response = await Product.find({ repairShop }).populate('category');
       res.send(response);
     } catch (error) {
       res.send(error);
@@ -14,7 +14,18 @@ module.exports = {
 
   async indexOf(req, res) {
     try {
-      const response = await Product.findById(req.params.id).populate('repairShop').populate('category');
+      const response = await Product.findById(req.params.id).populate('category');
+
+      if (response) res.send(response);
+      else res.sendStatus(404).end();
+    } catch (error) {
+      res.send(error);
+    }
+  },
+
+  async indexOfNp(req, res) {
+    try {
+      const response = await Product.findById(req.params.id);
 
       if (response) res.send(response);
       else res.sendStatus(404).end();
@@ -36,6 +47,8 @@ module.exports = {
   },
 
   async create(req, res) {
+    req.body.repairShop = req.repairShop;
+    
     try {
       const response = await Product.create(req.body);
       res.send(response);

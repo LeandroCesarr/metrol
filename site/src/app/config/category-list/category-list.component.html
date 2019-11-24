@@ -1,0 +1,15 @@
+<app-internal-controls [routerName]="'config/category'" [pageName]="'Categoria de produto'"></app-internal-controls>
+
+<ul class="m-category-card">
+  <li *ngFor="let item of categories" class="m-category-card_item">
+    <p class="m-category-card_item-txt">{{ item.name }}</p>
+    <div class="m-category-card_item-controls">
+      <a mat-raised-button color="accent" [routerLink]="['/config/category/new', item._id]">
+        <mat-icon>edit</mat-icon>
+      </a>
+      <a mat-raised-button color="warn" (click)="delete(item._id)">
+        <mat-icon>delete_forever</mat-icon>
+      </a>
+    </div>
+  </li>
+</ul>

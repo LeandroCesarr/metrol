@@ -3,21 +3,29 @@
 <form method="POST" class="m-form" #f="ngForm" (ngSubmit)="submit(f)">
   <small class="m-form_small">Campos com * sao obrigatórios</small>
 
-  <div class="m-form_field full">
+  <div class="m-form_field half">
     <mat-form-field>
-      <input matInput placeholder="Nome do Produto" required [(ngModel)]="storageService.name" name="name">
+      <input matInput placeholder="Nome do Produto" required [(ngModel)]="storage.name" name="name">
+    </mat-form-field>
+  </div>
+
+  <div class="m-form_field half right">
+    <mat-form-field>
+      <input matInput placeholder="Preço" required [(ngModel)]="storage.price" name="price">
     </mat-form-field>
   </div>
 
   <div class="m-form_field half">
     <mat-form-field>
-      <input matInput placeholder="Preço" required [(ngModel)]="storageService.price" name="price">
+      <input matInput placeholder="Quantidade" required [(ngModel)]="storage.quantity" type="number" name="quantity">
     </mat-form-field>
   </div>
 
-  <div class="m-form_field half">
+  <div class="m-form_field half right">
     <mat-form-field>
-      <input matInput placeholder="Quantidade" required [(ngModel)]="storageService.quantity" name="quantity">
+      <mat-select placeholder="Categoria" required [(ngModel)]="storage.category" name="category">
+        <mat-option *ngFor="let item of categories" [value]="item._id">{{ item.name }}</mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
 

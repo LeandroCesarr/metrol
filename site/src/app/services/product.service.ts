@@ -14,6 +14,14 @@ export class ProductService {
     return this.http.get(this.entryPoint).toPromise();
   }
 
+  indexOf(id: string) {
+    return this.http.get(`${this.entryPoint}/${id}`).toPromise();
+  }
+
+  indexOfNp(id: string) {
+    return this.http.get(`${this.entryPoint}/np/${id}`).toPromise();
+  }
+
   create(user: Object) {
     return this.http.post(this.entryPoint, user).toPromise();
   }

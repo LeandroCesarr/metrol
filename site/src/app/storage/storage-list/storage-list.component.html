@@ -1,11 +1,38 @@
-<p>storage-list works! Alou</p>
-<ul class="m-storage-card o-recent-storages">
-  <li *ngFor="let item of storages" class="m-storage-card_item" [routerLink]="['/storages/', item._id]">
-    <div class="m-storage-card_head" [ngClass]="{ 'active': item.status === 1, 'paused': item.status === 2, 'finished': item.status === 3 }">
-      <p class="m-storage-card_head-date">{{ item.delivery_date.slice(0, 10) }}</p>
-      <p class="m-storage-card_head-status">{{ statusEnum[item.status - 1] }}</p>
-    </div>
-    <div class="m-storage-card_body">
-    </div>
-  </li>
-</ul>
+<table mat-table [dataSource]="storages" class="mat-elevation-z8 m-table-data">
+    <ng-container matColumnDef="name">
+       <th mat-header-cell *matHeaderCellDef> Nome </th>
+       <td mat-cell *matCellDef="let item"> {{ item.name }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+      <td mat-cell *matCellDef="let item"> {{ item.quantity }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef> Categoria </th>
+      <td mat-cell *matCellDef="let item"> {{ item.category?.name }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+       <th mat-header-cell *matHeaderCellDef> Editar </th>
+       <td mat-cell *matCellDef="let item">
+          <a mat-raised-button color="accent" [routerLink]="['/storage/new', item._id]">
+             <mat-icon>edit</mat-icon>
+          </a>
+       </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+       <th mat-header-cell *matHeaderCellDef> Excluir </th>
+       <td mat-cell *matCellDef="let item">
+          <button mat-raised-button color="warn" (click)="delete(item._id)">
+             <mat-icon>delete_forever</mat-icon>
+          </button>
+       </td>
+    </ng-container>
+ 
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+ </table>
+ <ngx-loading [show]="loading"></ngx-loading>

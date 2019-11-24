@@ -14,6 +14,9 @@ import { ClientServiceHighlightComponent } from './client-service/client-service
 import { StorageComponent } from './storage/storage/storage.component';
 import { StorageListComponent } from './storage/storage-list/storage-list.component';
 import { StorageFormComponent } from './storage/storage-form/storage-form.component';
+import { ConfigComponent } from './config/config/config.component';
+import { ServiceFormComponent } from './config/service-form/service-form.component';
+import { CategoryFormComponent } from './config/category-form/category-form.component';
 
 
 const routes: Routes = [
@@ -32,7 +35,7 @@ const routes: Routes = [
     children: [
       { path: '', component: StorageComponent },
       { path: 'new', component: StorageFormComponent },
-      { path: 'new/:id', component: StorageListComponent }
+      { path: 'new/:id', component: StorageFormComponent }
       
     ]
   },
@@ -55,6 +58,18 @@ const routes: Routes = [
       { path: 'new', component: ClientServiceFormComponent },
       { path: 'new/:id', component: ClientServiceFormComponent },
       { path: ':id', component: ClientServiceHighlightComponent },
+    ]
+  },
+  {
+    path: 'config',
+    component: DefaultComponent,
+    canActivate: [ AuthGuard ],
+    children: [
+      { path: '', component: ConfigComponent },
+      { path: 'service/new', component: ServiceFormComponent },
+      { path: 'service/new/:id', component: ServiceFormComponent },
+      { path: 'category/new', component: CategoryFormComponent },
+      { path: 'category/new/:id', component: CategoryFormComponent },
     ]
   },
   { path: 'dash', component: DashboardComponent, canActivate: [ AuthGuard ] },

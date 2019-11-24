@@ -18,6 +18,7 @@ router.put('/repair-shop', repairShop.update);
 router.post('/repair-shop', repairShop.create);
 router.delete('/repair-shop', repairShop.delete);
 
+router.get('/product/np/:id', auth, product.indexOfNp);
 router.get('/product/:id', auth, product.indexOf);
 router.get('/product', auth, product.index);
 router.put('/product', auth, product.update);
@@ -43,6 +44,7 @@ router.put('/category', auth, category.update);
 router.post('/category', auth, category.create);
 router.delete('/category', auth, category.delete);
 
+router.get('/client-service/np/:id', auth, clientService.indexOfNp);
 router.get('/client-service/:id', auth, clientService.indexOf);
 router.get('/client-service', auth, clientService.index);
 router.put('/client-service', auth, clientService.update);

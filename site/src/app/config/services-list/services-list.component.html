@@ -1,0 +1,19 @@
+<app-internal-controls [routerName]="'config/service'" [pageName]="'Serviço prestado'"></app-internal-controls>
+
+<ul class="m-service-card">
+  <li *ngFor="let item of services" class="m-service-card_item pd">
+    <div class="m-service-card_item-txt">
+      <p><b>Nome</b>: {{ item.name }}</p>
+      <p><b>Preço</b>: {{ item.price }}</p>
+      <p><b>Descrição</b>: {{ item.description }}</p>
+    </div>
+    <div class="m-service-card_item-controls">
+      <a mat-raised-button color="accent" [routerLink]="['/config/service/new', item._id]">
+        <mat-icon>edit</mat-icon>
+      </a>
+      <a mat-raised-button color="warn" (click)="delete(item._id)">
+        <mat-icon>delete_forever</mat-icon>
+      </a>
+    </div>
+  </li>
+</ul>

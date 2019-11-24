@@ -30,6 +30,11 @@ import { ClientServiceHighlightComponent } from './client-service/client-service
 import { StorageComponent } from './storage/storage/storage.component';
 import { StorageListComponent } from './storage/storage-list/storage-list.component';
 import { StorageFormComponent } from './storage/storage-form/storage-form.component';
+import { ConfigComponent } from './config/config/config.component';
+import { ServicesListComponent } from './config/services-list/services-list.component';
+import { ServiceFormComponent } from './config/service-form/service-form.component';
+import { CategoryListComponent } from './config/category-list/category-list.component';
+import { CategoryFormComponent } from './config/category-form/category-form.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +57,12 @@ import { StorageFormComponent } from './storage/storage-form/storage-form.compon
     ClientServiceHighlightComponent,
     StorageComponent,
     StorageListComponent,
-    StorageFormComponent
+    StorageFormComponent,
+    ConfigComponent,
+    ServicesListComponent,
+    ServiceFormComponent,
+    CategoryListComponent,
+    CategoryFormComponent
   ],
   imports: [
     BrowserModule,

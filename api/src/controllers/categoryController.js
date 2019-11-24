@@ -36,6 +36,8 @@ module.exports = {
   },
 
   async create(req, res) {
+    req.body.repairShop = req.repairShop;
+    
     try {
       const response = await Category.create(req.body);
       res.send(response);

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema({
   name: { type: String, required: true },
   price: { type: Number, require: true },
-  quantify: { type: Number, required: true },
+  quantity: { type: Number, required: true },
   category: { type: mongoose.ObjectId, ref: 'Category' },
   repairShop: {type: mongoose.ObjectId, ref: 'RepairShop'}
 }, {

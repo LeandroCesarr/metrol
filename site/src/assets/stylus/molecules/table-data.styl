@@ -1,0 +1,26 @@
+.m-table-data {
+  width: 100%;
+
+  .mat-column-quantity {
+    text-align: center;  
+  }
+}
+
+.mat-row {
+  opacity: 0;
+  animation: fade .5s ease forwards;
+
+  for $i in (1..100) {
+    &:nth-child({$i}) {
+      animation-delay: ($i - 1) * .12s;
+    }
+  }
+
+  .mat-raised-button {
+    visibility: hidden;  
+  }
+
+  &:hover .mat-raised-button {
+    visibility: visible;  
+  }
+}

@@ -21,7 +21,18 @@ module.exports = {
 
   async indexOf(req, res) {
     try {
-      const response = await ClientService.findById(req.params.id).populate('client');
+      const response = await ClientService.findById(req.params.id).populate('client').populate('service');
+
+      if (response) res.send(response);
+      else res.sendStatus(404).end();
+    } catch (error) {
+      res.send(error);
+    }
+  },
+
+  async indexOfNp(req, res) {
+    try {
+      const response = await ClientService.findById(req.params.id);
 
       if (response) res.send(response);
       else res.sendStatus(404).end();
