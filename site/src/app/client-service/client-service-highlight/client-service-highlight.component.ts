@@ -57,4 +57,25 @@ export class ClientServiceHighlightComponent implements OnInit {
     }
   }
 
+  async finish() {
+    this.data.status = 3;
+
+    try {
+      let dialogRef = this.dialog.open(ConfirmDlgComponent, {
+        width: '100%',
+        data: { question: 'Deseja realmente finalizar este serviço ?' }
+      });
+
+      let result = await dialogRef.afterClosed().toPromise();
+
+      if (result) {
+        await this.clientServiceSrv.update(this.data);
+        this.snack.open('Serviço finalizado com sucesso!', 'Entendi', { duration: 3000 });
+        this.router.navigate(['/services'])
+      }
+    } catch (err) {
+      this.snack.open('Parece que algo deu errado.', 'Entendi' ,{ duration: 3000 })
+    }
+  }
+
 }

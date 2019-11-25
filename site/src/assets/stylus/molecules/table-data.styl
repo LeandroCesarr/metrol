@@ -2,7 +2,7 @@
   width: 100%;
 
   .mat-column-quantity {
-    text-align: center;  
+    text-align: center;
   }
 }
 
@@ -17,10 +17,24 @@
   }
 
   .mat-raised-button {
-    visibility: hidden;  
+    visibility: hidden;
   }
 
   &:hover .mat-raised-button {
-    visibility: visible;  
+    visibility: visible;
+  }
+}
+
+@media all and (max-width: 1023px) {
+  .m-table {
+    overflow-x: scroll;
+  }
+
+  .m-table-data {
+    white-space: nowrap;
+  }
+
+  .mat-raised-button {
+    visibility: visible;
   }
 }

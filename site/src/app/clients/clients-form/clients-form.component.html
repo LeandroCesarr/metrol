@@ -2,17 +2,22 @@
 
 <form method="POST" class="m-form" #f="ngForm" (ngSubmit)="submit(f)">
   <small class="m-form_small">Campos com * sao obrigatórios</small>
-  <div class="m-form_field full">
+  <div class="m-form_field half">
     <mat-form-field>
       <input matInput placeholder="Nome completo" required [(ngModel)]="client.name" name="name">
     </mat-form-field>
   </div>
 
-  <div class="m-form_field half">
+  <div class="m-form_field half right">
     <mat-form-field>
       <input matInput placeholder="Telefone" [(ngModel)]="client.phone" name="phone" mask="(00) 000000009">
     </mat-form-field>
   </div>
+  <div class="m-form_field half">
+      <mat-form-field>
+        <input matInput placeholder="Placa do veículo" [(ngModel)]="client.board" name="board" mask="AAA-0000">
+      </mat-form-field>
+    </div>
 
   <div class="m-form_field half right">
     <mat-form-field>

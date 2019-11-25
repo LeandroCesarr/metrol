@@ -23,6 +23,7 @@
 .m-category-card_item-controls {
   display: inline-block;
   transition: opacity .2s ease;
+  margin: 3px;
 
   a:first-child {
     margin-right: 10px;
@@ -38,5 +39,16 @@
 
   .m-category-card_item-controls {
     opacity: 0;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .m-category-card_item {
+    width: 100%;
+  }
+
+  .m-category-card_item-controls {
+    display: block;
+    margin-top: 10px;
   }
 }

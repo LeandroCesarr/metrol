@@ -13,7 +13,7 @@
 
   <div class="m-form_field half right">
     <mat-form-field>
-      <mat-select placeholder="Serviço" required multiple [(ngModel)]="clientService.service" name="service">
+      <mat-select placeholder="Serviço" required multiple [(ngModel)]="clientService.service" (ngModelChange)="reducePrice()" name="service">
         <mat-option *ngFor="let item of services" [value]="item._id">{{ item.name }}</mat-option>
       </mat-select>
     </mat-form-field>

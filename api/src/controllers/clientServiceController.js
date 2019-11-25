@@ -21,7 +21,14 @@ module.exports = {
 
   async indexOf(req, res) {
     try {
-      const response = await ClientService.findById(req.params.id).populate('client').populate('service');
+      const response = await ClientService.findById(req.params.id)
+      .populate('service')
+      .populate({
+        path: 'client',
+        populate: {
+          path: 'vehicle'
+        }
+      });
 
       if (response) res.send(response);
       else res.sendStatus(404).end();

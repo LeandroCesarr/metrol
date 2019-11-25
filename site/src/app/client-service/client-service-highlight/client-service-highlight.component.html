@@ -4,7 +4,7 @@
     <mat-icon>edit</mat-icon> Editar
   </a>
 
-  <a mat-raised-button color="accent">
+  <a mat-raised-button color="accent" (click)="finish()">
     <mat-icon>check</mat-icon> Finalizar
   </a>
 
@@ -15,7 +15,7 @@
 <hr>
 
 <p><b>Cliente</b>: {{ data.client?.name }}</p>
-<p><b>Veiculo</b>: {{ data.client?.vehicle?.name }} | {{ data/client?.board }}</p>
+<p><b>Veiculo</b>: {{ data.client?.vehicle?.name }} | {{ data.client?.board }}</p>
 <p><b>Endereço</b>: {{ data.client?.address }}</p>
 <p><b>Telefone</b>: {{ data.client?.phone }}</p>
 

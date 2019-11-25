@@ -79,4 +79,10 @@ export class ClientServiceFormComponent implements OnInit {
       this.loading = false;
     }
   }
+
+  reducePrice() {
+    this.clientService.price = this.services
+    .filter((service: any) => this.clientService.service.includes(service._id))
+    .reduce((acumulator: any, currentVal: any) => acumulator + currentVal.price, 0);
+  }
 }
