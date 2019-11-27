@@ -1,19 +1,42 @@
-<app-internal-controls [routerName]="'config/service'" [pageName]="'Serviço prestado'"></app-internal-controls>
+<app-internal-controls [routerName]="'config/service'" [pageName]="'Serviço Prestado'"></app-internal-controls>
 
-<ul class="m-service-card">
-  <li *ngFor="let item of services" class="m-service-card_item pd">
-    <div class="m-service-card_item-txt">
-      <p><b>Nome</b>: {{ item.name }}</p>
-      <p><b>Preço</b>: {{ item.price }}</p>
-      <p><b>Descrição</b>: {{ item.description }}</p>
-    </div>
-    <div class="m-service-card_item-controls">
-      <a mat-raised-button color="accent" [routerLink]="['/config/service/new', item._id]">
-        <mat-icon>edit</mat-icon>
-      </a>
-      <a mat-raised-button color="warn" (click)="delete(item._id)">
-        <mat-icon>delete_forever</mat-icon>
-      </a>
-    </div>
-  </li>
-</ul>
+<div class="m-table">
+  <table mat-table [dataSource]="services" class="mat-elevation-z8 m-table-data limited">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let item"> {{ item.name }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Preço (R$) </th>
+      <td mat-cell *matCellDef="let item"> {{ item.price }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Descrição </th>
+      <td mat-cell *matCellDef="let item"> {{ item.description }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Editar </th>
+      <td mat-cell *matCellDef="let item">
+        <a mat-raised-button color="accent" [routerLink]="['/config/service/new', item._id]">
+          <mat-icon>edit</mat-icon>
+        </a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Excluir </th>
+      <td mat-cell *matCellDef="let item">
+        <button mat-raised-button color="warn" (click)="delete(item._id)">
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<ngx-loading [show]="loading"></ngx-loading>
