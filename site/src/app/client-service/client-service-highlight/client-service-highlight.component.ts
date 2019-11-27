@@ -21,6 +21,8 @@ export class ClientServiceHighlightComponent implements OnInit {
 
   private id: string;
   private data: any = {};
+  private totalValue: Number = 0;
+  private displayedColumns: Array<String> = ['name', 'price'];
 
   ngOnInit() {
     this.getClientService();
@@ -50,8 +52,8 @@ export class ClientServiceHighlightComponent implements OnInit {
 
     if (params['id']) {
       this.id = params['id'];
-
       this.data = await this.clientServiceSrv.indexOf(this.id);
+      this.totalValue = this.data.service.reduce((acumulator: Number, el: any) => acumulator + el.price, 0);
     } else {
       this.router.navigate(['/services'])
     }
@@ -77,5 +79,4 @@ export class ClientServiceHighlightComponent implements OnInit {
       this.snack.open('Parece que algo deu errado.', 'Entendi' ,{ duration: 3000 })
     }
   }
-
 }

@@ -22,8 +22,20 @@
 <hr>
 
 <h3>Serviços:</h3>
-<ul>
-  <li *ngFor="let item of data.service">{{ item.name }} | R$ {{ item.price }}</li>
-</ul>
 
-<hr>
+<table mat-table [dataSource]="data.service" class="mat-elevation-z8 m-table-data limited">
+    <ng-container matColumnDef="name">
+       <th mat-header-cell *matHeaderCellDef> Serviço </th>
+       <td mat-cell *matCellDef="let item"> {{ item.name }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef class="right"> Preço (R$) </th>
+      <td mat-cell *matCellDef="let item" class="right"> {{ item.price }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+ </table>
+
+ <p>Valor total: {{ totalValue }}</p>

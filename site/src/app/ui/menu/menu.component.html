@@ -6,19 +6,19 @@
     </button>
     <ul class="o-menu_list">
       <li class="o-menu_item">
-        <a [routerLink]="['/']" class="o-menu_link">Home</a>
+        <a (click)="active = !active" [routerLink]="['/']" class="o-menu_link">Home</a>
       </li>
       <li class="o-menu_item">
-        <a [routerLinkActive]="['active']" [routerLink]="['/services']" class="o-menu_link">Serviços</a>
+        <a [routerLinkActive]="['active']" (click)="active = !active" [routerLink]="['/services']" class="o-menu_link">Serviços</a>
       </li>
       <li class="o-menu_item">
-        <a [routerLinkActive]="['active']" [routerLink]="['/storage']" class="o-menu_link">Estoque</a>
+        <a [routerLinkActive]="['active']" (click)="active = !active" [routerLink]="['/storage']" class="o-menu_link">Estoque</a>
       </li>
       <li class="o-menu_item">
-        <a [routerLinkActive]="['active']" [routerLink]="['/clients']" class="o-menu_link">Clientes</a>
+        <a [routerLinkActive]="['active']" (click)="active = !active" [routerLink]="['/clients']" class="o-menu_link">Clientes</a>
       </li>
       <li class="o-menu_item">
-        <a [routerLinkActive]="['active']" [routerLink]="['/config']" class="o-menu_link">Configurações</a>
+        <a [routerLinkActive]="['active']" (click)="active = !active" [routerLink]="['/config']" class="o-menu_link">Configurações</a>
       </li>
     </ul>
   </nav>

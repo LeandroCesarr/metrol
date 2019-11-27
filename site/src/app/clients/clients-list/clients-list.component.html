@@ -1,5 +1,5 @@
 <ul class="m-client-list">
-  <li class="m-client-list_item" *ngFor="let item of clients">
+  <li class="m-client-list_item" *ngFor="let item of clients" [routerLink]="['/clients/highlight', item._id]">
     <div class="m-clients-list_data">
       <p class="m-client-list_item-name"><strong>{{ item.name }}</strong></p>
       <p class="m-client-list_item-email">{{ item.email }}</p>

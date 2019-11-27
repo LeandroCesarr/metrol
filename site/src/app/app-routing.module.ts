@@ -12,11 +12,11 @@ import { ServicesComponent } from './client-service/services/services.component'
 import { ClientServiceFormComponent } from './client-service/client-service-form/client-service-form.component';
 import { ClientServiceHighlightComponent } from './client-service/client-service-highlight/client-service-highlight.component';
 import { StorageComponent } from './storage/storage/storage.component';
-import { StorageListComponent } from './storage/storage-list/storage-list.component';
 import { StorageFormComponent } from './storage/storage-form/storage-form.component';
 import { ConfigComponent } from './config/config/config.component';
 import { ServiceFormComponent } from './config/service-form/service-form.component';
 import { CategoryFormComponent } from './config/category-form/category-form.component';
+import { ClientsHighlightComponent } from './clients/clients-highlight/clients-highlight.component';
 
 
 const routes: Routes = [
@@ -46,7 +46,8 @@ const routes: Routes = [
     children: [
       { path: '', component: ClientsComponent },
       { path: 'new', component: ClientsFormComponent },
-      { path: 'new/:id', component: ClientsFormComponent }
+      { path: 'highlight/:id', component: ClientsHighlightComponent },
+      { path: 'new/:id', component: ClientsFormComponent },
     ]
   },
   {

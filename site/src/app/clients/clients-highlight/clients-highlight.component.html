@@ -1,0 +1,37 @@
+<h1>Cliente: #{{ client._id }}</h1>
+<div class="m-clients-list_controls visible">
+  <a mat-raised-button color="accent" [routerLink]="['/clients/new', id]">
+    <mat-icon>edit</mat-icon> Editar
+  </a>
+
+  <a mat-raised-button color="warn" (click)="delete(id)">
+    <mat-icon>delete_forever</mat-icon> Deletar
+  </a>
+</div>
+<hr>
+
+<p><b>Cliente</b>: {{ client.name }}</p>
+<p><b>Veiculo</b>: {{ client.vehicle?.name }} | {{ client.board }}</p>
+<p><b>Endereço</b>: {{ client.address }}</p>
+<p><b>Endereço</b>: {{ client.cpf }}</p>
+<p><b>Endereço</b>: {{ client.email }}</p>
+<p><b>Telefone</b>: {{ client.phone }}</p>
+
+<hr>
+
+<h2>Serviços recentes</h2>
+
+<ul class="m-service-card o-recent-services">
+    <li *ngFor="let item of services" class="m-service-card_item" [routerLink]="['/services/', item._id]">
+      <div class="m-service-card_head" [ngClass]="{ 'active': item.status === 1, 'paused': item.status === 2, 'finished': item.status === 3 }">
+        <p class="m-service-card_head-date">{{ item.delivery_date.slice(0, 10) }}</p>
+        <p class="m-service-card_head-status">{{ statusEnum[item.status - 1] }}</p>
+      </div>
+      <div class="m-service-card_body">
+        <p class="m-service-card_body-txt">Entrada: {{ item.createdAt.slice(0, 10) }}</p>
+        <p class="m-service-card_body-txt">Entrega: {{ item.delivery_date.slice(0, 10) }}</p>
+        <p class="m-service-card_body-txt" *ngIf="item.status_payment === 1">Pagamento: A pagar</p>
+        <p class="m-service-card_body-txt" *ngIf="item.status_payment === 2">Pagamento: Pago</p>
+      </div>
+    </li>
+  </ul>

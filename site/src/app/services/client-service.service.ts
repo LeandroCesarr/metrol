@@ -18,6 +18,10 @@ export class ClientServiceService {
     return this.http.get(`${this.entryPoint}/${id}`).toPromise();
   }
 
+  indexOfId(id: string) {
+    return this.http.get(`${this.entryPoint}/client/${id}`).toPromise();
+  }
+
   indexOfNp(id: string) {
     return this.http.get(`${this.entryPoint}/np/${id}`).toPromise();
   }

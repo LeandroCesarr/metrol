@@ -19,6 +19,24 @@ module.exports = {
     }
   },
 
+  async indexOfId(req, res) {
+    const client = req.params.id
+  
+    try {
+      const response = await ClientService.find({ client })
+      .populate('service')
+      .populate({
+        path: 'client',
+        populate: {
+          path: 'vehicle'
+        }
+      })
+      res.send(response);
+    } catch (error) {
+      res.send(error);
+    }
+  },
+
   async indexOf(req, res) {
     try {
       const response = await ClientService.findById(req.params.id)

@@ -44,6 +44,7 @@ router.put('/category', auth, category.update);
 router.post('/category', auth, category.create);
 router.delete('/category', auth, category.delete);
 
+router.get('/client-service/client/:id', auth, clientService.indexOfId);
 router.get('/client-service/np/:id', auth, clientService.indexOfNp);
 router.get('/client-service/:id', auth, clientService.indexOf);
 router.get('/client-service', auth, clientService.index);

@@ -35,6 +35,7 @@ import { ServicesListComponent } from './config/services-list/services-list.comp
 import { ServiceFormComponent } from './config/service-form/service-form.component';
 import { CategoryListComponent } from './config/category-list/category-list.component';
 import { CategoryFormComponent } from './config/category-form/category-form.component';
+import { ClientsHighlightComponent } from './clients/clients-highlight/clients-highlight.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { CategoryFormComponent } from './config/category-form/category-form.comp
     ServicesListComponent,
     ServiceFormComponent,
     CategoryListComponent,
-    CategoryFormComponent
+    CategoryFormComponent,
+    ClientsHighlightComponent
   ],
   imports: [
     BrowserModule,
