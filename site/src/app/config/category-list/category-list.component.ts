@@ -14,7 +14,8 @@ export class CategoryListComponent implements OnInit {
     private snack: MatSnackBar,
     private dialog: MatDialog,
   ) { }
-
+  
+  private displayedColumns: Array<String> = ['name', 'edit', 'delete'];
   private categories: any = [];
   private loading: boolean = false;
 

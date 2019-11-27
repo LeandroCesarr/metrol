@@ -1,15 +1,32 @@
-<app-internal-controls [routerName]="'config/category'" [pageName]="'Categoria de produto'"></app-internal-controls>
+<app-internal-controls [routerName]="'config/category'" [pageName]="'Categoria do Produto'"></app-internal-controls>
 
-<ul class="m-category-card">
-  <li *ngFor="let item of categories" class="m-category-card_item">
-    <p class="m-category-card_item-txt">{{ item.name }}</p>
-    <div class="m-category-card_item-controls">
-      <a mat-raised-button color="accent" [routerLink]="['/config/category/new', item._id]">
-        <mat-icon>edit</mat-icon>
-      </a>
-      <a mat-raised-button color="warn" (click)="delete(item._id)">
-        <mat-icon>delete_forever</mat-icon>
-      </a>
-    </div>
-  </li>
-</ul>
+<div class="m-table">
+  <table mat-table [dataSource]="categories" class="mat-elevation-z8 m-table-data limited">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let item"> {{ item.name }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Editar </th>
+      <td mat-cell *matCellDef="let item">
+        <a mat-raised-button color="accent" [routerLink]="['/config/category/new', item._id]">
+          <mat-icon>edit</mat-icon>
+        </a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Excluir </th>
+      <td mat-cell *matCellDef="let item">
+        <button mat-raised-button color="warn" (click)="delete(item._id)">
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<ngx-loading [show]="loading"></ngx-loading>

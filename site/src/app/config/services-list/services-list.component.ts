@@ -16,6 +16,7 @@ export class ServicesListComponent implements OnInit {
     private dialog: MatDialog,
   ) { }
 
+  private displayedColumns: Array<String> = ['name', 'price', 'description', 'edit', 'delete'];
   private services: any = [];
 
   ngOnInit() {

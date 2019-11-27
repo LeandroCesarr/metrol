@@ -66,10 +66,10 @@ const routes: Routes = [
     canActivate: [ AuthGuard ],
     children: [
       { path: '', component: ConfigComponent },
-      { path: 'service/new', component: ServiceFormComponent },
       { path: 'service/new/:id', component: ServiceFormComponent },
-      { path: 'category/new', component: CategoryFormComponent },
+      { path: 'service/new', component: ServiceFormComponent },
       { path: 'category/new/:id', component: CategoryFormComponent },
+      { path: 'category/new', component: CategoryFormComponent },
     ]
   },
   { path: 'dash', component: DashboardComponent, canActivate: [ AuthGuard ] },
