@@ -1,41 +1,48 @@
 <h1>Serviço: #{{ id }}</h1>
-<div class="m-clients-list_controls visible">
-  <a mat-raised-button color="accent" [routerLink]="['/services/new', id]">
-    <mat-icon>edit</mat-icon> Editar
-  </a>
 
-  <a mat-raised-button color="accent" (click)="finish()">
-    <mat-icon>check</mat-icon> Finalizar
-  </a>
+<div class="t-highlight">
+  <div class="m-clients-list_controls visible">
+    <a mat-raised-button color="accent" [routerLink]="['/services/new', id]">
+      <mat-icon>edit</mat-icon> Editar
+    </a>
 
-  <a mat-raised-button color="warn" (click)="delete(id)">
-    <mat-icon>delete_forever</mat-icon> Deletar
-  </a>
+    <a mat-raised-button color="accent" (click)="finish()">
+      <mat-icon>check</mat-icon> Finalizar
+    </a>
+
+    <a mat-raised-button color="warn" (click)="delete(id)">
+      <mat-icon>delete_forever</mat-icon> Deletar
+    </a>
+  </div>
+  <hr>
+
+  <p><b>Cliente</b>: {{ data.client?.name }}</p>
+  <p><b>Veiculo</b>: {{ data.client?.vehicle?.name }} | {{ data.client?.board }}</p>
+  <p><b>Endereço</b>: {{ data.client?.address }}</p>
+  <p><b>Telefone</b>: {{ data.client?.phone }}</p>
+
+  <hr>
+
+  <h3>Serviços:</h3>
+
+  <table mat-table [dataSource]="data.service" class="mat-elevation-z8 m-table-data">
+      <ng-container matColumnDef="name">
+         <th mat-header-cell *matHeaderCellDef> Serviço </th>
+         <td mat-cell *matCellDef="let item"> {{ item.name }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef class="right"> Preço </th>
+        <td mat-cell *matCellDef="let item" class="right"> {{ item.price }} R$</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+   </table>
+
+   <div class="m-total-value">
+     <p class="m-total-value_label">Valor total: </p>
+     <p class="m-total-value_value">{{ totalValue }} R$</p>
+   </div>
 </div>
-<hr>
 
-<p><b>Cliente</b>: {{ data.client?.name }}</p>
-<p><b>Veiculo</b>: {{ data.client?.vehicle?.name }} | {{ data.client?.board }}</p>
-<p><b>Endereço</b>: {{ data.client?.address }}</p>
-<p><b>Telefone</b>: {{ data.client?.phone }}</p>
-
-<hr>
-
-<h3>Serviços:</h3>
-
-<table mat-table [dataSource]="data.service" class="mat-elevation-z8 m-table-data limited">
-    <ng-container matColumnDef="name">
-       <th mat-header-cell *matHeaderCellDef> Serviço </th>
-       <td mat-cell *matCellDef="let item"> {{ item.name }} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef class="right"> Preço (R$) </th>
-      <td mat-cell *matCellDef="let item" class="right"> {{ item.price }} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
- </table>
-
- <p>Valor total: {{ totalValue }}</p>

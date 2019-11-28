@@ -1,5 +1,6 @@
 <div class="m-table">
-  <table mat-table [dataSource]="storages" class="mat-elevation-z8 m-table-data">
+  <p *ngIf="storages.length == 0" class="error-msg">Nada encontrado</p>
+  <table mat-table [dataSource]="storages" *ngIf="storages.length >= 1" class="mat-elevation-z8 m-table-data">
       <ng-container matColumnDef="name">
          <th mat-header-cell *matHeaderCellDef> Nome </th>
          <td mat-cell *matCellDef="let item"> {{ item.name }} </td>

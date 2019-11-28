@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ClientServiceService } from '../../services/client-service.service';
+import { MatSnackBar } from "@angular/material";
 @Component({
   selector: 'app-client-service-list',
   templateUrl: './client-service-list.component.html',
@@ -12,6 +13,7 @@ export class ClientServiceListComponent implements OnInit {
 
   constructor(
     private service: ClientServiceService,
+    private snack: MatSnackBar,
   ) { }
   private services: any = [];
   private statusEnum: Array<string> = ['Ativo', 'Pausado', 'Finalizado'];
@@ -32,7 +34,7 @@ export class ClientServiceListComponent implements OnInit {
         this.services = this.services.filter((el: any) => el.client._id === this.serviceId)
       }
     } catch (err) {
-      this.services[0] = err;
+      this.snack.open('Parece que algo deu errado, os dados nao foram salvos', 'Entendi' ,{ duration: 3000 })
     }
   }
 

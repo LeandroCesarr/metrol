@@ -1,7 +1,8 @@
 <app-internal-controls [routerName]="'config/category'" [pageName]="'Categoria do Produto'"></app-internal-controls>
 
 <div class="m-table">
-  <table mat-table [dataSource]="categories" class="mat-elevation-z8 m-table-data limited">
+  <p *ngIf="categories.length == 0" class="error-msg">Nada encontrado</p>
+  <table mat-table [dataSource]="categories" *ngIf="categories.length >= 1" class="mat-elevation-z8 m-table-data limited">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Nome </th>
       <td mat-cell *matCellDef="let item"> {{ item.name }} </td>

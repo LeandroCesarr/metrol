@@ -28,7 +28,7 @@ export class ClientsListComponent implements OnInit {
       this.clients = await this.service.index();
 
     } catch (err) {
-      this.clients[0] = err;
+      this.snack.open('Parece que algo deu errado', 'Entendi' ,{ duration: 3000 });
     }
   }
 

@@ -1,7 +1,8 @@
 <app-internal-controls [routerName]="'config/service'" [pageName]="'Serviço Prestado'"></app-internal-controls>
 
 <div class="m-table">
-  <table mat-table [dataSource]="services" class="mat-elevation-z8 m-table-data limited">
+  <p *ngIf="services.length == 0" class="error-msg">Nada encontrado</p>
+  <table mat-table [dataSource]="services" *ngIf="services.length >= 1" class="mat-elevation-z8 m-table-data limited">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Nome </th>
       <td mat-cell *matCellDef="let item"> {{ item.name }} </td>

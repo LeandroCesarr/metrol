@@ -28,7 +28,7 @@ export class ServicesListComponent implements OnInit {
       this.services = await this.serviceSrv.index();
 
     } catch (err) {
-      this.services[0] = err;
+      this.snack.open('Parece que algo deu errado', 'Entendi' ,{ duration: 3000 });
     }
   }
 

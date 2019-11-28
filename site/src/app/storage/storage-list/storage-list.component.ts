@@ -27,7 +27,7 @@ export class StorageListComponent implements OnInit {
     try {
       this.storages = await this.productSrv.index();
     } catch (err) {
-      this.storages[0] = err;
+      this.snack.open('Parece que algo deu errado', 'Entendi' ,{ duration: 3000 });
     }
   }
 

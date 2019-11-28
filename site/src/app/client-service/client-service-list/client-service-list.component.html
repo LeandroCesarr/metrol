@@ -1,4 +1,4 @@
-<ul class="m-service-card o-recent-services">
+<ul class="m-service-card o-recent-services" *ngIf="services.length >= 1">
   <li *ngFor="let item of services" class="m-service-card_item" [routerLink]="['/services/', item._id]">
     <div class="m-service-card_head" [ngClass]="{ 'active': item.status === 1, 'paused': item.status === 2, 'finished': item.status === 3 }">
       <p class="m-service-card_head-date">{{ item.delivery_date.slice(0, 10) }}</p>
@@ -14,3 +14,5 @@
     </div>
   </li>
 </ul>
+
+<p *ngIf="services.length == 0" class="error-msg">Nada encontrado</p>

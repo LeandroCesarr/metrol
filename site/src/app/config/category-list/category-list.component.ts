@@ -14,7 +14,7 @@ export class CategoryListComponent implements OnInit {
     private snack: MatSnackBar,
     private dialog: MatDialog,
   ) { }
-  
+
   private displayedColumns: Array<String> = ['name', 'edit', 'delete'];
   private categories: any = [];
   private loading: boolean = false;
@@ -28,7 +28,7 @@ export class CategoryListComponent implements OnInit {
       this.categories = await this.categorySrv.index();
     } catch (err) {
 
-      this.categories[0] = err;
+      this.snack.open('Parece que algo deu errado', 'Entendi' ,{ duration: 3000 });
     }
   }
 
